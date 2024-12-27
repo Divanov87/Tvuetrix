@@ -78,7 +78,6 @@ const resources = {
     Contacts: 'Контакти',
     About: 'За нас',
     Sign_In: 'Влез',
-  },
   footer: {
     theater: 'Театър',
     concerts: 'Концерти',
@@ -113,6 +112,7 @@ const resources = {
     general_error: 'Възникна грешка. Моля, опитайте отново.',
     enter_email_placeholder: 'Въведете имейла си..',
   },
+},
 };
 
 i18next
