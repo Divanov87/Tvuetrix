@@ -23,6 +23,16 @@ const resources = {
     Contacts: 'Contacts',
     About: 'About',
     Sign_In: 'Sign in',
+    footer: {
+      theater: 'Theater',
+      concerts: 'Concerts',
+      contacts: 'Contacts',
+      about: 'About',
+      faq: 'FAQ',
+      help_center: 'Help Center',
+      terms_of_use: 'Terms of Use',
+      privacy: 'Privacy',
+    },
   },
   bg: {
     Home: 'Начало',
@@ -44,7 +54,17 @@ const resources = {
     Contacts: 'Контакти',
     About: 'За нас',
     Sign_In: 'Влез',
-  }
+  },
+  footer: {
+    theater: 'Театър',
+    concerts: 'Концерти',
+    contacts: 'Контакти',
+    about: 'За нас',
+    faq: 'ЧЗВ',
+    help_center: 'Помощeн център',
+    terms_of_use: 'Условия за ползване',
+    privacy: 'Поверителност',
+  },
 };
 
 i18next
