@@ -1,7 +1,7 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-
+import CTAForm from './cta-form/CTAForm.vue';
 
 const { t } = useI18n();
 const isGoTopActive = ref(false);
@@ -25,6 +25,7 @@ onBeforeUnmount(() => {
 
 <template>
   <footer class="footer">
+    <CTAForm />
 
     <div class="footer-top">
       <div class="container">
