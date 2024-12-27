@@ -4,6 +4,7 @@ import AppFooter from './components/layout/AppFooter/AppFooter.vue';
 
 import PWABanner from './components/pwa-banner/PWABanner.vue';
 import PWABadge from './components/PWABadge.vue';
+import ScrollToTop from './components/ScrollToTop.vue';
 </script>
 
 <template>
@@ -11,6 +12,7 @@ import PWABadge from './components/PWABadge.vue';
   <RouterView />
   <PWABadge />
   <PWABanner />
+  <ScrollToTop />
   <AppFooter />
 </template>
 
