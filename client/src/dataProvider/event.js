@@ -8,7 +8,7 @@ export async function getEvent(_id) {
   }
   catch (error) {
     console.error('Error in getEvent:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -18,7 +18,7 @@ export async function createEvent(eventData) {
   }
   catch (error) {
     console.error('Error in createEvent:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -28,7 +28,7 @@ export async function editEvent(eventData, _id) {
   }
   catch (error) {
     console.error('Error in editEvent:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -38,7 +38,7 @@ export async function deleteEvent(_id) {
   }
   catch (error) {
     console.error('Error in deleteEvent:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -48,7 +48,7 @@ export async function getAllEvents() {
   }
   catch (error) {
     console.error('Error in getAllEvents:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -58,7 +58,7 @@ export async function getTheaterEvents() {
   }
   catch (error) {
     console.error('Error in getTheaterEvents:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -68,7 +68,7 @@ export async function getConcertEvents() {
   }
   catch (error) {
     console.error('Error in getConcertEvents:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -79,7 +79,7 @@ export async function getTopRatedEvents() {
   }
   catch (error) {
     console.error('Error in getTopRatedEvents:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -89,7 +89,7 @@ export async function getAllEventsData() {
   }
   catch (error) {
     console.error('Error in getAllEventsData:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -99,7 +99,7 @@ export async function buyTickets(_id) {
   }
   catch (error) {
     console.error('Error in buyTickets:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -109,7 +109,7 @@ export async function likeEvent(_id) {
   }
   catch (error) {
     console.error('Error in likeEvent:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -119,7 +119,7 @@ export async function unlikeEvent(_id) {
   }
   catch (error) {
     console.error('Error in unlikeEvent:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -129,7 +129,7 @@ export async function pinEvent(_id) {
   }
   catch (error) {
     console.error('Error in pinEvent:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -139,7 +139,7 @@ export async function unpinEvent(_id) {
   }
   catch (error) {
     console.error('Error in unpinEvent:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -149,7 +149,7 @@ export async function cloneEvent(_id) {
   }
   catch (error) {
     console.error('Error in cloneEvent:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -159,7 +159,7 @@ export async function searchEvents(queryParams) {
   }
   catch (error) {
     console.error('Error in searchEvents:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -169,7 +169,7 @@ export async function getAllCities() {
   }
   catch (error) {
     console.error('Error in getAllCities:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -179,7 +179,7 @@ export async function getUserEvents(_id) {
   }
   catch (error) {
     console.error('Error in getUserEvents:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -189,7 +189,7 @@ export async function getAllUsers() {
   }
   catch (error) {
     console.error('Error in getAllUsers:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -199,6 +199,6 @@ export async function getUsersActivity() {
   }
   catch (error) {
     console.error('Error in getUsersActivity:', error);
-    return [];
+    throw error;
   }
 }
