@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import NotFound from '../components/not-found/NotFound.vue';
 
 import Login from '../views/auth/Login.vue';
 import Register from '../views/auth/Register.vue';
@@ -14,6 +15,7 @@ const routes = [
       { path: 'register', component: Register, name: 'Register' },
     ],
   },
+  { path: '/:pathMatch(.*)*', component: NotFound, name: 'NotFound' },
 ];
 
 const router = createRouter({
