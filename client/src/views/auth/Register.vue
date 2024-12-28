@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '../../store/authStore';
@@ -7,9 +7,20 @@ import useVuelidate from '@vuelidate/core';
 import { required, minLength, email, sameAs } from '@vuelidate/validators';
 
 
+const authStore = useAuthStore();
+authStore.setUserFromToken();
+
+const isLogged = computed(() => authStore.isLogged);
+
+
+onMounted(() => {
+  if (isLogged) {
+    router.push('/');
+  }
+});
+
 const { t } = useI18n();
 const router = useRouter();
-const authStore = useAuthStore();
 
 const formData = ref({
   username: '',
