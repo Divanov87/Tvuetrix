@@ -9,7 +9,7 @@ export async function addBulletin(bulletinData) {
   }
   catch (error) {
     console.error('Error subscribing:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -20,7 +20,7 @@ export async function getBulletins() {
   }
   catch (error) {
     console.error('Error fetching bulletins:', error);
-    return [];
+    throw error;
   }
 }
 
@@ -31,6 +31,6 @@ export async function removeBulletin(bulletinData) {
   }
   catch (error) {
     console.error('Error unsubscribing:', error);
-    return [];
+    throw error;
   }
 }
