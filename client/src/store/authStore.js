@@ -37,7 +37,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
     catch (error) {
       console.error('Login failed', error);
-      return [];
+      throw new Error('Invalid username/email or password');
     }
   }
 
@@ -50,7 +50,8 @@ export const useAuthStore = defineStore('auth', () => {
     }
     catch (error) {
       console.error('Registration failed', error);
-      return [];
+      throw new Error('Username or email already exists!');
+      
     }
   }
 
