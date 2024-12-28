@@ -1,15 +1,19 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useAuthStore } from '../../../store/authStore';
 import { useLanguageStore } from '../../../store/languageStore';
 
 const { t } = useI18n();
+const authStore = useAuthStore();
+authStore.setUserFromToken();
 
 const languageStore = useLanguageStore();
 
 const isNavbarActive = ref(false);
 const isHeaderActive = ref(false);
-
+const user = computed(() => authStore.user);
+const isLogged = computed(() => authStore.isLogged);
 const language = computed(() => languageStore.currentLanguage);
 
 function toggleNavbar() {
@@ -158,7 +162,7 @@ onBeforeUnmount(() => {
           </li>
           <template v-if="isLogged">
           <li>
-              <a class="navbar-link" style="cursor: pointer">{{ t('Logout') }}</a>
+              <a class="navbar-link" style="cursor: pointer" @click="authStore.logout()">{{ t('Logout') }}</a>
             </li>
           </template>
         </ul>
