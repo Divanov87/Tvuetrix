@@ -153,6 +153,7 @@ const resources = {
       testimonial_3_2: '<strong>Запази</strong> Достъп, ',
       testimonial_3_3: 'Наслади се.',
       testimonial_3_4: '',
+      welcome: 'Добре, дошъл',
       badge_1: 'Драма',
       badge_2: 'Комедия',
       badge_3: 'Сатира',
