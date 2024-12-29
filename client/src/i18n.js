@@ -223,7 +223,7 @@ const resources = {
     subtitle: 'Моля, въведете вашите данни',
     username_placeholder: 'Потребителско име',
     password_placeholder: 'Парола',
-    repeat_password_placeholder: 'Повторете паролата',
+    repeat_password_placeholder: 'Повтори парола',
     email_placeholder: 'Имейл',
     city_placeholder: 'Град',
     username_error: 'Потребителското име трябва да е поне 3 символа!',
