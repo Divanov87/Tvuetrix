@@ -13,5 +13,3 @@ app.use(i18n);
 app.use(router);
 app.use(pinia);
 app.mount('#app');
-
-
