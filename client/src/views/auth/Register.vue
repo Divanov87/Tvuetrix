@@ -77,12 +77,13 @@ async function handleSubmit() {
         formData.value.city,
       );
       router.push('/');
+    } catch (error) {
+      registrationError.value = t('register.registration_error', {
+        username: formData.value.username,
+        email: formData.value.email,
+      }) || console.log(error);
     }
-    catch (error) {
-      registrationError.value = error.response?.data?.error || t('register.registration_error');
-    }
-  }
-  else {
+  } else {
     registrationError.value = t('register.fill_required_fields');
   }
 }

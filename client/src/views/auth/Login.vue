@@ -63,15 +63,13 @@ async function handleSubmit() {
     try {
       await authStore.login(formData.value.username_email, formData.value.password);
       router.push('/');
+    } catch (error) {
+      loginError.value = t('login.invalid_login') || console.log(error);
     }
-    catch (error) {
-      loginError.value = t('login.invalid_login') && console.log(error);
-    }
-  }
-  else {
+  } else {
     loginError.value = t('login.fill_required_fields');
   }
-}
+};
 
 function passShowHandler() {
   showPassword.value = !showPassword.value;
