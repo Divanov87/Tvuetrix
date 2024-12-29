@@ -6,6 +6,7 @@ import Register from '../views/auth/Register.vue';
 import Dashboard from '../views/dashboard/Dashboard.vue';
 import EventCatalog from '../views/events/event-catalog/EventCatalog.vue';
 import EventDetails from '../views/events/event-details/EventDetails.vue';
+import Search from '../views/search/Search.vue';
 
 const routes = [
   { path: '/', component: Dashboard, name: 'Dashboard' },
@@ -14,7 +15,6 @@ const routes = [
     path: '/events',
     children: [
       { path: ':eventId/details', component: EventDetails, name: 'EventDetails' },
-
     ],
   },
   {
@@ -24,6 +24,7 @@ const routes = [
       { path: 'register', component: Register, name: 'Register' },
     ],
   },
+  { path: '/search', component: Search, name: 'Search' },
   { path: '/:pathMatch(.*)*', component: NotFound, name: 'NotFound' },
 ];
 
