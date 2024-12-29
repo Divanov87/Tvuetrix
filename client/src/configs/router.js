@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import NotFound from '../components/not-found/NotFound.vue';
+import EventDetails from '../views/events/event-details/EventDetails.vue';
 
 import Login from '../views/auth/Login.vue';
 import Register from '../views/auth/Register.vue';
@@ -8,6 +9,13 @@ import Dashboard from '../views/dashboard/Dashboard.vue';
 
 const routes = [
   { path: '/', component: Dashboard, name: 'Dashboard' },
+  {
+    path: '/events',
+    children: [
+      { path: ':eventId/details', component: EventDetails, name: 'EventDetails' },
+
+    ],
+  },
   {
     path: '/auth',
     children: [
