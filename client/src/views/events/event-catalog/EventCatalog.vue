@@ -1,5 +1,5 @@
 <script setup>
-import EventPagination from '../../../components/EventPagination.vue';
+import EventPagination from '../../../components/event-pagination/EventPagination.vue';
 import Loader from '../../../components/Loader.vue';
 import { useEvents } from '../../../composables/useEvents';
 import { usePagination } from '../../../composables/usePagination';
