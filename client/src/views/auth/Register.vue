@@ -50,7 +50,7 @@ const validations = computed(() => ({
   email: {
     required,
     email,
-    validEmailDomain: value => /^[\w.-]+@(gmail\.com|abv\.bg|mail\.bg)$/.test(value) || t('register.email_error'),
+    validEmailDomain: value => /^[\w.-]+@(?:gmail\.com|abv\.bg|mail\.bg)$/.test(value),
   },
   city: {
     required,
@@ -202,10 +202,15 @@ watch(formData, () => {
 
             <button
               type="submit"
-              class="btn"
+              class="btn" :class="[{ 'btn-disabled': isFormInvalid }]"
               :disabled="isFormInvalid"
+              :style="{
+                backgroundColor: isFormInvalid ? 'grey' : '',
+                cursor: isFormInvalid ? 'not-allowed' : 'pointer',
+                color: isFormInvalid ? 'white' : '',
+              }"
             >
-              {{ t('register.registration_button') }}
+              {{ $t('register.registration_button') }}
             </button>
 
             <div class="register-link">
