@@ -1,26 +1,25 @@
 <script setup>
-import { computed, ref, watch, onMounted } from 'vue';
+import useVuelidate from '@vuelidate/core';
+import { minLength, required } from '@vuelidate/validators';
+import { computed, onMounted, ref, watch } from 'vue';
+
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '../../store/authStore';
-import useVuelidate from '@vuelidate/core';
-import { required, minLength, email } from '@vuelidate/validators';
-
 
 const authStore = useAuthStore();
 authStore.setUserFromToken();
 
+const router = useRouter();
 const isLogged = computed(() => authStore.isLogged);
 
-
 onMounted(() => {
-  if (isLogged) {
+  if (isLogged.value) {
     router.push('/');
   }
 });
 
 const { t } = useI18n();
-const router = useRouter();
 
 const formData = ref({
   username_email: '',
@@ -45,36 +44,38 @@ const validations = computed(() => ({
 const v$ = useVuelidate(validations, formData);
 
 const isFormInvalid = computed(() =>
-  v$.value.$invalid || Object.values(formData.value).some(field => !field)
+  v$.value.$invalid || Object.values(formData.value).some(field => !field),
 );
 
-const setFocusedField = (field) => {
+function setFocusedField(field) {
   focusedField.value = field;
   v$.value.$touch();
-};
+}
 
-const clearFocusedField = () => {
+function clearFocusedField() {
   focusedField.value = '';
-};
+}
 
-const handleSubmit = async () => {
+async function handleSubmit() {
   v$.value.$touch();
 
   if (!v$.value.$invalid) {
     try {
       await authStore.login(formData.value.username_email, formData.value.password);
       router.push('/');
-    } catch (error) {
-      loginError.value = t('login.invalid_login');
     }
-  } else {
+    catch (error) {
+      loginError.value = t('login.invalid_login') && console.log(error);
+    }
+  }
+  else {
     loginError.value = t('login.fill_required_fields');
   }
-};
+}
 
-const passShowHandler = () => {
+function passShowHandler() {
   showPassword.value = !showPassword.value;
-};
+}
 
 watch(formData, () => {
   v$.value.$touch();
@@ -84,7 +85,9 @@ watch(formData, () => {
 <template>
   <article>
     <section class="movie-detail">
-      <p class="section-subtitle">{{ t('login.title') }}</p>
+      <p class="section-subtitle">
+        {{ t('login.title') }}
+      </p>
       <div class="container-reg-log-edit">
         <div class="wrapper">
           <form @submit.prevent="handleSubmit">
@@ -99,7 +102,7 @@ watch(formData, () => {
                 autocomplete="username_email"
                 @focus="setFocusedField('username_email')"
                 @blur="clearFocusedField"
-              />
+              >
               <i class="bx bxs-user" />
             </div>
 
@@ -116,7 +119,7 @@ watch(formData, () => {
                 autocomplete="current-password"
                 @focus="setFocusedField('password')"
                 @blur="clearFocusedField"
-              />
+              >
               <i :class="showPassword ? 'bx bxs-lock-open-alt' : 'bx bxs-lock-alt'" style="cursor: pointer" @click="passShowHandler" />
             </div>
 

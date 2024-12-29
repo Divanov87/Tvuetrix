@@ -1,26 +1,25 @@
 <script setup>
-import { computed, ref, watch, onMounted } from 'vue';
+import useVuelidate from '@vuelidate/core';
+import { email, minLength, required, sameAs } from '@vuelidate/validators';
+import { computed, onMounted, ref, watch } from 'vue';
+
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
 import { useAuthStore } from '../../store/authStore';
-import useVuelidate from '@vuelidate/core';
-import { required, minLength, email, sameAs } from '@vuelidate/validators';
-
 
 const authStore = useAuthStore();
 authStore.setUserFromToken();
 
+const router = useRouter();
 const isLogged = computed(() => authStore.isLogged);
 
-
-onMounted(() => {
-  if (isLogged) {
+onMounted(() => {  
+  if (isLogged.value) {
     router.push('/');
   }
 });
 
 const { t } = useI18n();
-const router = useRouter();
 
 const formData = ref({
   username: '',
@@ -51,7 +50,7 @@ const validations = computed(() => ({
   email: {
     required,
     email,
-    validEmailDomain: (value) => /^[\w.-]+@(gmail\.com|abv\.bg|mail\.bg)$/.test(value) || t('register.email_error'),
+    validEmailDomain: value => /^[\w.-]+@(gmail\.com|abv\.bg|mail\.bg)$/.test(value) || t('register.email_error'),
   },
   city: {
     required,
@@ -59,14 +58,13 @@ const validations = computed(() => ({
   },
 }));
 
-
 const v$ = useVuelidate(validations, formData);
 
 const isFormInvalid = computed(() =>
-  v$.value.$invalid || Object.values(formData.value).some((field) => !field)
+  v$.value.$invalid || Object.values(formData.value).some(field => !field),
 );
 
-const handleSubmit = async () => {
+async function handleSubmit() {
   v$.value.$touch();
 
   if (!v$.value.$invalid) {
@@ -76,24 +74,26 @@ const handleSubmit = async () => {
         formData.value.password,
         formData.value.repeatPassword,
         formData.value.email,
-        formData.value.city
+        formData.value.city,
       );
       router.push('/');
-    } catch (error) {
+    }
+    catch (error) {
       registrationError.value = error.response?.data?.error || t('register.registration_error');
     }
-  } else {
+  }
+  else {
     registrationError.value = t('register.fill_required_fields');
   }
-};
+}
 
-const setFocusedField = (field) => {
+function setFocusedField(field) {
   focusedField.value = field;
-};
+}
 
-const clearFocusedField = () => {
+function clearFocusedField() {
   focusedField.value = '';
-};
+}
 
 watch(formData, () => {
   v$.value.$touch();
@@ -103,7 +103,9 @@ watch(formData, () => {
 <template>
   <article>
     <section class="movie-detail">
-      <p class="section-subtitle">{{ t('register.title') }}</p>
+      <p class="section-subtitle">
+        {{ t('register.title') }}
+      </p>
       <div class="container-reg-log-edit">
         <div class="wrapper">
           <form @submit.prevent="handleSubmit">
@@ -117,8 +119,8 @@ watch(formData, () => {
                 :placeholder="t('register.username_placeholder')"
                 @focus="setFocusedField('username')"
                 @blur="clearFocusedField"
-              />
-              <i class="bx bxs-user"></i>
+              >
+              <i class="bx bxs-user" />
             </div>
             <p v-if="focusedField === 'username' && v$.username.$error" class="error">
               {{ t('register.username_error') }}
@@ -132,7 +134,7 @@ watch(formData, () => {
                 :placeholder="t('register.password_placeholder')"
                 @focus="setFocusedField('password')"
                 @blur="clearFocusedField"
-              />
+              >
               <i
                 :class="showPassword ? 'bx bxs-lock-alt' : 'bx bxs-lock-open-alt'"
                 style="cursor: pointer"
@@ -143,7 +145,6 @@ watch(formData, () => {
               {{ t('register.password_error') }}
             </p>
 
-
             <div class="input-box">
               <input
                 v-model="formData.repeatPassword"
@@ -152,8 +153,8 @@ watch(formData, () => {
                 :placeholder="t('register.repeat_password_placeholder')"
                 @focus="setFocusedField('repeatPassword')"
                 @blur="clearFocusedField"
-              />
-        
+              >
+
               <i
                 :class="showPassword ? 'bx bxs-lock-alt' : 'bx bxs-lock-open-alt'"
                 style="cursor: pointer"
@@ -172,8 +173,8 @@ watch(formData, () => {
                 :placeholder="t('register.email_placeholder')"
                 @focus="setFocusedField('email')"
                 @blur="clearFocusedField"
-              />
-              <i class="bx bx-mail-send"></i>
+              >
+              <i class="bx bx-mail-send" />
             </div>
             <p v-if="focusedField === 'email' && v$.email.$error" class="error">
               {{ t('register.email_error') }}
@@ -187,14 +188,16 @@ watch(formData, () => {
                 :placeholder="t('register.city_placeholder')"
                 @focus="setFocusedField('city')"
                 @blur="clearFocusedField"
-              />
-              <i class="bx bxs-map"></i>
+              >
+              <i class="bx bxs-map" />
             </div>
             <p v-if="focusedField === 'city' && v$.city.$error" class="error">
               {{ t('register.city_error') }}
             </p>
 
-            <p v-if="registrationError" class="error">{{ registrationError }}</p>
+            <p v-if="registrationError" class="error">
+              {{ registrationError }}
+            </p>
 
             <button
               type="submit"
