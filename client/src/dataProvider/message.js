@@ -5,7 +5,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 export async function addMessage(messageData) {
   try {
     const response = await post(`${BASE_URL}/messages`, messageData);
-    throw error;
+    return response;
   }
   catch (error) {
     console.error('Error adding message:', error);
