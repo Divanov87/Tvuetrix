@@ -1,14 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import NotFound from '../components/not-found/NotFound.vue';
 
+import NotFound from '../components/not-found/NotFound.vue';
 import Login from '../views/auth/Login.vue';
 import Register from '../views/auth/Register.vue';
+import Contacts from '../views/Contacts.vue';
 import Dashboard from '../views/dashboard/Dashboard.vue';
 import EventCatalog from '../views/events/event-catalog/EventCatalog.vue';
 import EventConcerts from '../views/events/event-concerts/EventConcerts.vue';
 import EventDetails from '../views/events/event-details/EventDetails.vue';
 import EventTheater from '../views/events/event-theater/EventTheater.vue';
+import Profile from '../views/profile/Profile.vue';
 import Search from '../views/search/Search.vue';
+
+
 
 const routes = [
   { path: '/', component: Dashboard, name: 'Dashboard' },
@@ -28,9 +32,13 @@ const routes = [
       { path: 'register', component: Register, name: 'Register' },
     ],
   },
+
   { path: '/search', component: Search, name: 'Search' },
+  { path: '/profile', component: Profile, name: 'Profile' },
+  { path: '/contacts', component: Contacts, name: 'Contacts' },
   { path: '/:pathMatch(.*)*', component: NotFound, name: 'NotFound' },
 ];
+
 
 const router = createRouter({
   history: createWebHistory(),
