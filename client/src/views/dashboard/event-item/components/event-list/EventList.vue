@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import FilterList from '../../../../../components/FilterList.vue';
 import { useLocation } from '../../../../../libs/useLocation';
 import { useAuthStore } from '../../../../../store/authStore';
@@ -21,18 +21,19 @@ const selectedCity = ref('');
 const { user, isLogged } = useAuthStore();
 const { city: cityFromLocation } = useLocation();
 
-
 const displayCity = computed(() => {
-  if (isLogged) return user?.location
-  if (isLogged && cityFromLocation) return cityFromLocation
+  if (isLogged)
+    return user?.location;
+  if (isLogged && cityFromLocation)
+    return cityFromLocation;
 
   if (selectedCity.value) {
     return selectedCity.value;
   }
-  if (cityFromLocation) cityFromLocation
+  if (cityFromLocation.value)
+    return cityFromLocation.value;
   return 'your city';
 });
-
 
 watch(
   [() => props.events, selectedCity],
@@ -41,20 +42,19 @@ watch(
       filteredEvents.value = events.filter(event =>
         event.location.toLowerCase() === selectedCity.value.toLowerCase(),
       );
-    } else {
+    }
+    else {
       filteredEvents.value = events;
     }
   },
   { immediate: true },
 );
 
-
 watch(cityFromLocation, (newCity) => {
   if (!isLogged && !selectedCity.value && newCity) {
     selectedCity.value = newCity;
   }
 });
-
 
 function handleCityFilter(city) {
   selectedCity.value = city;
