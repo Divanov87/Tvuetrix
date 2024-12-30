@@ -1,6 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
 import NotFound from '../components/not-found/NotFound.vue';
+
+
+import AdminPanel from '../views/admin-panel/AdminPanel.vue';
+import Bulletin from '../views/admin-panel/components/Bulletin.vue';
+import Messages from '../views/admin-panel/components/Messages.vue';
+import Users from '../views/admin-panel/components/Users.vue';
 import Login from '../views/auth/Login.vue';
 import Register from '../views/auth/Register.vue';
 import Contacts from '../views/Contacts.vue';
@@ -23,6 +28,7 @@ const routes = [
       { path: 'theater', component: EventTheater, name: 'EventTheater' },
       { path: 'concerts', component: EventConcerts, name: 'EventConcerts' },
       { path: ':eventId/details', component: EventDetails, name: 'EventDetails' },
+
     ],
   },
   {
@@ -32,7 +38,15 @@ const routes = [
       { path: 'register', component: Register, name: 'Register' },
     ],
   },
-
+  { path: '/admin-panel', component: AdminPanel },
+  {
+    path: '/admin-panel',
+    children: [
+      { path: 'users', component: Users, name: 'AdminUsers' },
+      { path: 'messages', component: Messages, name: 'AdminMessages' },
+      { path: 'bulletin', component: Bulletin, name: 'AdminBulletin' },
+    ],
+  },
   { path: '/search', component: Search, name: 'Search' },
   { path: '/profile', component: Profile, name: 'Profile' },
   { path: '/contacts', component: Contacts, name: 'Contacts' },
