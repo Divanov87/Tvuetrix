@@ -9,7 +9,7 @@
 
 <img src="./client/public/assets/images/logo.svg" />
 
-<h2 align="center">Theatrix - Netflix Inspired Theater And Concert Events App</h2>
+<h2 align="center">Theatrix ─ a Netflix Inspired Theater And Concert Events App</h2>
 
   Theatrix is a Netflix inspired theater and concert event app,
 
