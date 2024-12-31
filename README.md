@@ -7,7 +7,7 @@
 <br />
   <br />
 
-<img src="./client/public/assets/images/logo-t.svg" />
+<img src="./client/public/assets/images/logo.svg" />
 
 <h2 align="center">Theatrix - Netflix Inspired Theater And Concert Events App</h2>
 
