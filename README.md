@@ -78,8 +78,8 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * qrcode.vue
 * i18next
 * i18next-browser-languagedetector
+* 
 * sweetalert2
-* vue-recaptcha
 
 ## ACTIONS
 
@@ -129,7 +129,6 @@ then proceed with registration.
 Server and client are configured to work on localhost. Server (Express REST API) is accessible from http://localhost:3000 and client (Vue) from http://192.168.56.1:5173 (default ports).
 
 
-
 <table style="width: 804px;">
 <thead>
 <tr style="height: 42px;">
@@ -146,9 +145,9 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <td style="height: 212px; width: 151.367px;">/</td>
 <td style="height: 212px; width: 18.6333px;" align="center">GET</td>
 <td style="height: 212px; width: 408px;">
-<p>Retrieves Pinned/Important Events (put by admins) latest Theater Events, latest Concert Events, All Time Top Rated Events***</p>
+<p>Retrieves Pinned Events (manually put by admins), Latest Theater Events, Latest Concert Events, All Time Top Rated Events***</p>
 <p> </p>
-<p>*** Accessed by logged-in users, becomes strongly personalised page. It displays theater events, concerts and top rated events based on users location (using city from registration, TODO for not-logged using geo-location)</p>
+<p>***Accessed by Logged-in users or guests which allowed geo-location, becomes strongly personalised page. It displays theater events, concert events and top rated events based on users location (using city from registration or geo-location if allowed and aplicable*)</p>
 </td>
 <td style="height: 212px; width: 73px;" align="center">✔️</td>
 <td style="height: 212px; width: 74px;" align="center">✔️</td>
@@ -202,13 +201,13 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <td style="height: 22px; width: 74px;" align="center">✔️</td>
 <td style="height: 22px; width: 72px;" align="center">❌</td>
 </tr>
-<tr style="height: 22px;">
-<td style="height: 22px; width: 151.367px;"> ███████████████</td>
-<td style="height: 22px; width: 18.6333px;" align="center">██████</td>
-<td style="height: 22px; width: 408px;">███████████████████████████</td>
-<td style="height: 22px; width: 73px;" align="center"> ██████</td>
-<td style="height: 22px; width: 74px;" align="center">█████</td>
-<td style="height: 22px; width: 72px;" align="center">█████</td>
+<tr style="height: 22px; background-color: red;">
+<td style="height: 22px; width: 151.367px;">                 T</td>
+<td style="height: 22px; width: 18.6333px;" align="center">H</td>
+<td style="height: 22px; width: 408px;">              E               A                 T</td>
+<td style="height: 22px; width: 73px;" align="center">R</td>
+<td style="height: 22px; width: 74px;" align="center">I</td>
+<td style="height: 22px; width: 72px;" align="center">X</td>
 </tr>
 <tr style="height: 42px;">
 <td style="height: 42px; width: 151.367px;">/events/</td>
@@ -322,13 +321,13 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <td style="height: 22px; width: 74px;" align="center"><strong>-</strong></td>
 <td style="height: 22px; width: 72px;" align="center"><strong>-</strong></td>
 </tr>
-<tr style="height: 22px;">
-<td style="height: 22px; width: 151.367px;"> ███████████████</td>
-<td style="height: 22px; width: 18.6333px;" align="center">██████</td>
-<td style="height: 22px; width: 408px;">███████████████████████████</td>
-<td style="height: 22px; width: 73px;" align="center"> ██████</td>
-<td style="height: 22px; width: 74px;" align="center">█████</td>
-<td style="height: 22px; width: 72px;" align="center">█████</td>
+<tr style="height: 22px; background-color: red;">
+<td style="height: 22px; width: 151.367px;">                 T</td>
+<td style="height: 22px; width: 18.6333px;" align="center">H</td>
+<td style="height: 22px; width: 408px;">              E               A                 T</td>
+<td style="height: 22px; width: 73px;" align="center">R</td>
+<td style="height: 22px; width: 74px;" align="center">I</td>
+<td style="height: 22px; width: 72px;" align="center">X</td>
 </tr>
 <tr style="height: 42px;">
 <td style="height: 42px; width: 151.367px;">/auth/register</td>
@@ -357,13 +356,13 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <td style="height: 42px; width: 74px;" align="center">❌</td>
 <td style="height: 42px; width: 72px;" align="center">❌</td>
 </tr>
-<tr style="height: 22px;">
-<td style="height: 22px; width: 151.367px;"> ███████████████</td>
-<td style="height: 22px; width: 18.6333px;" align="center">██████</td>
-<td style="height: 22px; width: 408px;">███████████████████████████</td>
-<td style="height: 22px; width: 73px;" align="center"> ██████</td>
-<td style="height: 22px; width: 74px;" align="center">█████</td>
-<td style="height: 22px; width: 72px;" align="center">█████</td>
+<tr style="height: 22px; background-color: red;">
+<td style="height: 22px; width: 151.367px;">                 T</td>
+<td style="height: 22px; width: 18.6333px;" align="center">H</td>
+<td style="height: 22px; width: 408px;">              E               A                 T</td>
+<td style="height: 22px; width: 73px;" align="center">R</td>
+<td style="height: 22px; width: 74px;" align="center">I</td>
+<td style="height: 22px; width: 72px;" align="center">X</td>
 </tr>
 <tr style="height: 22px;">
 <td style="height: 22px; width: 151.367px;">/comments/:eventId</td>
@@ -403,13 +402,13 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <td style="height: 22px; width: 74px;" align="center"><span style="font-family: Arial, Helvetica, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">✔️</span></td>
 <td style="height: 22px; width: 72px;" align="center">✔️</td>
 </tr>
-<tr style="height: 22px;">
-<td style="height: 22px; width: 151.367px;"> ███████████████</td>
-<td style="height: 22px; width: 18.6333px;" align="center">██████</td>
-<td style="height: 22px; width: 408px;">███████████████████████████</td>
-<td style="height: 22px; width: 73px;" align="center"> ██████</td>
-<td style="height: 22px; width: 74px;" align="center">█████</td>
-<td style="height: 22px; width: 72px;" align="center">█████</td>
+<tr style="height: 22px; background-color: red;">
+<td style="height: 22px; width: 151.367px;">                 T</td>
+<td style="height: 22px; width: 18.6333px;" align="center">H</td>
+<td style="height: 22px; width: 408px;">              E               A                 T</td>
+<td style="height: 22px; width: 73px;" align="center">R</td>
+<td style="height: 22px; width: 74px;" align="center">I</td>
+<td style="height: 22px; width: 72px;" align="center">X</td>
 </tr>
 <tr style="height: 22px;">
 <td style="height: 22px; width: 151.367px;">/messages/</td>
@@ -449,13 +448,13 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <td style="height: 22px; width: 74px;" align="center"><span style="font-family: Arial, Helvetica, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">✔️</span></td>
 <td style="height: 22px; width: 72px;" align="center"><span style="font-family: Arial, Helvetica, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">❌</span></td>
 </tr>
-<tr style="height: 22px;">
-<td style="height: 22px; width: 151.367px;"> ███████████████</td>
-<td style="height: 22px; width: 18.6333px;" align="center">██████</td>
-<td style="height: 22px; width: 408px;">███████████████████████████</td>
-<td style="height: 22px; width: 73px;" align="center"> ██████</td>
-<td style="height: 22px; width: 74px;" align="center">█████</td>
-<td style="height: 22px; width: 72px;" align="center">█████</td>
+<tr style="height: 22px; background-color: red;">
+<td style="height: 22px; width: 151.367px;">                 T</td>
+<td style="height: 22px; width: 18.6333px;" align="center">H</td>
+<td style="height: 22px; width: 408px;">              E               A                 T</td>
+<td style="height: 22px; width: 73px;" align="center">R</td>
+<td style="height: 22px; width: 74px;" align="center">I</td>
+<td style="height: 22px; width: 72px;" align="center">X</td>
 </tr>
 <tr style="height: 22px;">
 <td style="height: 22px; width: 151.367px;">/bulletin</td>
@@ -481,13 +480,13 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <td style="height: 22px; width: 74px;" align="center"><span style="font-family: Arial, Helvetica, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">✔️</span></td>
 <td style="height: 22px; width: 72px;" align="center"><span style="font-family: Arial, Helvetica, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">✔️</span></td>
 </tr>
-<tr style="height: 22px;">
-<td style="height: 22px; width: 151.367px;"> ███████████████</td>
-<td style="height: 22px; width: 18.6333px;" align="center">██████</td>
-<td style="height: 22px; width: 408px;">███████████████████████████</td>
-<td style="height: 22px; width: 73px;" align="center"> ██████</td>
-<td style="height: 22px; width: 74px;" align="center">█████</td>
-<td style="height: 22px; width: 72px;" align="center">█████</td>
+<tr style="height: 22px; background-color: red;">
+<td style="height: 22px; width: 151.367px;">                 T</td>
+<td style="height: 22px; width: 18.6333px;" align="center">H</td>
+<td style="height: 22px; width: 408px;">              E               A                 T</td>
+<td style="height: 22px; width: 73px;" align="center">R</td>
+<td style="height: 22px; width: 74px;" align="center">I</td>
+<td style="height: 22px; width: 72px;" align="center">X</td>
 </tr>
 <tr style="height: 22px;">
 <td style="height: 22px; width: 151.367px;">/blog/</td>
@@ -546,7 +545,7 @@ Server and client are configured to work on localhost. Server (Express REST API)
 </tr>
 <tr style="height: 22px;">
 <td style="height: 22px; width: 151.367px;">/blog/:id</td>
-<td style="height: 22px; width: 18.6333px;" align="center">POST</td>
+<td style="height: 22px; width: 18.6333px;" align="center">DELETE</td>
 <td style="height: 22px; width: 408px;">Deletes blog post/news </td>
 <td style="height: 22px; width: 73px;" align="center">❌</td>
 <td style="height: 22px; width: 74px;" align="center"><span style="font-family: Arial, Helvetica, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">✔️</span></td>
@@ -558,7 +557,6 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <div class="notranslate" style="all: initial;"> </div>
 <div class="notranslate" style="all: initial;"> </div>
 <div class="notranslate" style="all: initial;"> </div>
-
 
 
 ## THEATRIX - AS PWA PROGRESSIVE WEB APP - SCREENSHOTS
