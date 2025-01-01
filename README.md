@@ -124,7 +124,7 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 
 then proceed with registration.
 
-## THEATRIX REST API Endpoints (w/o Comments, Messages, Bulletin endpoints):
+## THEATRIX REST API Endpoints:
 
 Server and client are configured to work on localhost. Server (Express REST API) is accessible from http://localhost:3000 and client (Vue) from http://192.168.56.1:5173 (default ports).
 
