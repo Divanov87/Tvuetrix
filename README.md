@@ -71,11 +71,15 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 ### Client:
 
 * vue
+* vuelidate
+* pinia
 * js-cookie
 * jwt-decode
-* vue-qr-code
-* vue-i18next
+* qrcode.vue
+* i18next
+* i18next-browser-languagedetector
 * sweetalert2
+* vue-recaptcha
 
 ## ACTIONS
 
