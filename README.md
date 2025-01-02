@@ -547,36 +547,25 @@ Server and client are configured to work on localhost. Server (Express REST API)
 
 ## SCREENSHOTS
 
-<table>
-  <tr>
-    <td><img src="./preview-images/screenshots/0.webp" /></td>
-  </tr>
-  <tr>
-    <td valign="top"><img src="./preview-images/screenshots/1.webp" width="31.8%"></td>
-    <td valign="top"><img src="./preview-images/screenshots/2.webp" width="31.8%"></td>
-    <td valign="top"><img src="./preview-images/screenshots/3.webp" width="31.8%"></td>
-  </tr>
-  <tr>
-    <td><img src="./preview-images/screenshots/4.webp" /></td>
-  </tr>
-  <tr>
-    <td valign="top"><img src="./preview-images/screenshots/5.webp" width="31.8%"></td>
-    <td valign="top"><img src="./preview-images/screenshots/6.webp" width="31.8%"></td>
-    <td valign="top"><img src="./preview-images/screenshots/7.webp" width="31.8%"></td>
-  </tr>
-  <tr>
-    <td><img src="./preview-images/screenshots/8.webp" width="47.8%" /></td>
-    <td><img src="./preview-images/screenshots/9.webp" width="47.8%" /></td>
-  </tr>
- </table>
-
-<img src="./preview-images/screenshots/0.webp" />
-<img src="./preview-images/screenshots/1.webp" width="31.8%" />
-<img src="./preview-images/screenshots/2.webp" width="31.8%" />
-<img src="./preview-images/screenshots/3.webp" width="31.8%" />
-<img src="./preview-images/screenshots/4.webp" />
-<img src="./preview-images/screenshots/5.webp" width="31.8%" />
-<img src="./preview-images/screenshots/6.webp" width="31.8%" />
-<img src="./preview-images/screenshots/7.webp" width="31.8%" />
-<img src="./preview-images/screenshots/8.webp" width="47.8%" />
-<img src="./preview-images/screenshots/9.webp" width="47.8%" />
+<div style="display: grid; gap: 16px;">
+  <div style="grid-column: span 3;">
+    <img src="./preview-images/screenshots/0.webp" alt="Screenshot 0" style="width: 100%; height: auto;" />
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+    <img src="./preview-images/screenshots/1.webp" alt="Screenshot 1" style="width: 100%; height: auto;" />
+    <img src="./preview-images/screenshots/2.webp" alt="Screenshot 2" style="width: 100%; height: auto;" />
+    <img src="./preview-images/screenshots/3.webp" alt="Screenshot 3" style="width: 100%; height: auto;" />
+  </div>
+  <div style="grid-column: span 3;">
+    <img src="./preview-images/screenshots/4.webp" alt="Screenshot 4" style="width: 100%; height: auto;" />
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+    <img src="./preview-images/screenshots/5.webp" alt="Screenshot 5" style="width: 100%; height: auto;" />
+    <img src="./preview-images/screenshots/6.webp" alt="Screenshot 6" style="width: 100%; height: auto;" />
+    <img src="./preview-images/screenshots/7.webp" alt="Screenshot 7" style="width: 100%; height: auto;" />
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+    <img src="./preview-images/screenshots/8.webp" alt="Screenshot 8" style="width: 100%; height: auto;" />
+    <img src="./preview-images/screenshots/9.webp" alt="Screenshot 9" style="width: 100%; height: auto;" />
+  </div>
+</div>
