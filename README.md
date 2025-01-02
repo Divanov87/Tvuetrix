@@ -7,7 +7,7 @@
 <br />
   <br />
 
-<img src="./client/public/assets/images/logo.svg" />
+<img src="./client/public/assets/images/logo.svg" style="display: block; margin: 0 auto"/>
 
 <h2 align="center">Theatrix ─ a Netflix Inspired Theater And Concert Events App</h2>
 
@@ -21,19 +21,10 @@
 
 </div>
 
-## SCREENSHOTS
-
-[](https://github.com/Divanov87/Tvuetrix#screenshots)
-
-<img src="./preview-images/desktop.png" />
-    <br />
-    <br />
-  <img src="./preview-images/tablet.png" />
-  <img src="./preview-images/mobile.png" />
+<img src="./preview-images/theatrix-mobile.png" width="20%" />
+<img src="./preview-images/theatrix-tablet.png" width="65%" />
 
 ## ABOUT
-
-[](https://github.com/Divanov87/Tvuetrix#about)
 
 **Theatrix** is a place for event holders represented as admins and customers in face of users that can interact seamlessly..
 
@@ -83,7 +74,6 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 
 ## ACTIONS
 
-[](https://github.com/Divanov87/Tvuetrix#actions)
 
 ### Administrators:
 
@@ -106,19 +96,17 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 
 ## HOW TO
 
-[](https://github.com/Divanov87/Tvuetrix#howto)
-
-### Server:
+### Server
 
 * npm i
 * npm start
 
-### Client:
+### Client
 
 * npm i
 * npm dev start on http://192.168.56.1:5173/. To test progressive web app and geo-location you will need secure connection (https://)
 
-### Notes:
+### Notes
 
 **🔴 TO ADD YOURSELF AS ADMIN, ADD YOUR IP ADDRESS IN ENV FILE ON SERVER => exports.ADMIN_IP_ADDRESS = "your.ip.address.here"**,
 
@@ -127,7 +115,6 @@ then proceed with registration.
 ## THEATRIX REST API Endpoints:
 
 Server and client are configured to work on localhost. Server (Express REST API) is accessible from http://localhost:3000 and client (Vue) from http://192.168.56.1:5173 (default ports).
-
 
 <table style="width: 804px;">
 <thead>
@@ -558,11 +545,15 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <div class="notranslate" style="all: initial;"> </div>
 <div class="notranslate" style="all: initial;"> </div>
 
+## SCREENSHOTS
 
-## THEATRIX - AS PWA PROGRESSIVE WEB APP - SCREENSHOTS
-
-<img src="./preview-images/pwa-test.jpg" />
-    <br />
-    <br />
-  <img src="./preview-images/pwa-test2.jpg" />
-  <img src="./preview-images/pwa-test3.jpg" />
+<img src="./preview-images/screenshots/0.webp" />
+<img src="./preview-images/screenshots/1.webp" width="31.8%" />
+<img src="./preview-images/screenshots/2.webp" width="31.8%" />
+<img src="./preview-images/screenshots/3.webp" width="31.8%" />
+<img src="./preview-images/screenshots/4.webp" />
+<img src="./preview-images/screenshots/5.webp" width="31.8%" />
+<img src="./preview-images/screenshots/6.webp" width="31.8%" />
+<img src="./preview-images/screenshots/7.webp" width="31.8%" />
+<img src="./preview-images/screenshots/8.webp" width="48%" />
+<img src="./preview-images/screenshots/9.webp" width="48%" />
