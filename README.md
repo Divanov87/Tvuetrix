@@ -547,13 +547,36 @@ Server and client are configured to work on localhost. Server (Express REST API)
 
 ## SCREENSHOTS
 
+<table>
+  <tr>
+    <td><img src="./preview-images/screenshots/0.webp" /></td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="./preview-images/screenshots/1.webp" width="31.8%"></td>
+    <td valign="top"><img src="./preview-images/screenshots/2.webp" width="31.8%"></td>
+    <td valign="top"><img src="./preview-images/screenshots/3.webp" width="31.8%"></td>
+  </tr>
+  <tr>
+    <td><img src="./preview-images/screenshots/4.webp" /></td>
+  </tr>
+  <tr>
+    <td valign="top"><img src="./preview-images/screenshots/5.webp" width="31.8%"></td>
+    <td valign="top"><img src="./preview-images/screenshots/6.webp" width="31.8%"></td>
+    <td valign="top"><img src="./preview-images/screenshots/7.webp" width="31.8%"></td>
+  </tr>
+  <tr>
+    <td><img src="./preview-images/screenshots/8.webp" width="47.8%" /></td>
+    <td><img src="./preview-images/screenshots/9.webp" width="47.8%" /></td>
+  </tr>
+ </table>
+
 <img src="./preview-images/screenshots/0.webp" />
-<img src="./preview-images/screenshots/1.webp" width="31%" />
-<img src="./preview-images/screenshots/2.webp" width="31%" />
-<img src="./preview-images/screenshots/3.webp" width="31%" />
+<img src="./preview-images/screenshots/1.webp" width="31.8%" />
+<img src="./preview-images/screenshots/2.webp" width="31.8%" />
+<img src="./preview-images/screenshots/3.webp" width="31.8%" />
 <img src="./preview-images/screenshots/4.webp" />
 <img src="./preview-images/screenshots/5.webp" width="31.8%" />
 <img src="./preview-images/screenshots/6.webp" width="31.8%" />
 <img src="./preview-images/screenshots/7.webp" width="31.8%" />
-<img src="./preview-images/screenshots/8.webp" width="46%" />
-<img src="./preview-images/screenshots/9.webp" width="46%" />
+<img src="./preview-images/screenshots/8.webp" width="47.8%" />
+<img src="./preview-images/screenshots/9.webp" width="47.8%" />
