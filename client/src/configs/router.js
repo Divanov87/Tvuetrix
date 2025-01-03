@@ -1,7 +1,8 @@
+import { computed } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import NotFound from '../components/not-found/NotFound.vue';
 
-
+import { useAuthStore } from '../store/authStore';
 import AdminPanel from '../views/admin-panel/AdminPanel.vue';
 import Bulletin from '../views/admin-panel/components/Bulletin.vue';
 import Messages from '../views/admin-panel/components/Messages.vue';
@@ -21,6 +22,32 @@ import Search from '../views/search/Search.vue';
 
 
 
+async function isAuth() {
+  const authStore = useAuthStore();
+  await authStore.setUserFromToken();
+  return authStore.isLogged ? true : { path: '/auth/login' };
+}
+
+async function validateUser() {
+  const authStore = useAuthStore();
+  await authStore.setUserFromToken();
+
+  const user = computed(() => authStore.user);
+  return user.value?.role === 'user'
+    ? true
+    : { path: '/' };
+}
+
+async function validateAdmin() {
+  const authStore = useAuthStore();
+  await authStore.setUserFromToken();
+
+  const user = computed(() => authStore.user);
+  return user.value?.role === 'admin'
+    ? true
+    : { path: '/' };
+}
+
 const routes = [
   { path: '/', component: Dashboard, name: 'Dashboard' },
   { path: '/events', component: EventCatalog, name: 'EventCatalog' },
@@ -29,9 +56,9 @@ const routes = [
     children: [
       { path: 'theater', component: EventTheater, name: 'EventTheater' },
       { path: 'concerts', component: EventConcerts, name: 'EventConcerts' },
-      { path: 'add', component: EventAdd, name: 'EventAdd' },
+      { path: 'add', component: EventAdd, name: 'EventAdd', beforeEnter: validateAdmin },
       { path: ':eventId/details', component: EventDetails, name: 'EventDetails' },
-      { path: ':eventId/edit', component: EventEdit, name: 'EventEdit' },
+      { path: ':eventId/edit', component: EventEdit, name: 'EventEdit', beforeEnter: validateAdmin },
     ],
   },
   {
@@ -41,7 +68,7 @@ const routes = [
       { path: 'register', component: Register, name: 'Register' },
     ],
   },
-  { path: '/admin-panel', component: AdminPanel },
+  { path: '/admin-panel', component: AdminPanel, beforeEnter: validateAdmin },
   {
     path: '/admin-panel',
     children: [
@@ -50,8 +77,8 @@ const routes = [
       { path: 'bulletin', component: Bulletin, name: 'AdminBulletin' },
     ],
   },
-  { path: '/search', component: Search, name: 'Search' },
-  { path: '/profile', component: Profile, name: 'Profile' },
+  { path: '/search', component: Search, name: 'Search', beforeEnter: isAuth },
+  { path: '/profile', component: Profile, name: 'Profile', beforeEnter: validateUser },
   { path: '/contacts', component: Contacts, name: 'Contacts' },
   { path: '/:pathMatch(.*)*', component: NotFound, name: 'NotFound' },
 ];
