@@ -66,7 +66,7 @@ export const useAuthStore = defineStore('auth', () => {
       Cookies.remove('user');
       user.value = null;
       token.value = null;
-      router.push('/');
+      router.push('/auth/login');
     }
   }
 
