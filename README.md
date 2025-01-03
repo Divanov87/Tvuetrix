@@ -21,16 +21,10 @@
 
 </div>
 
-<table style="width: 100%; border-collapse: collapse; text-align: center;">
-  <tr>
-    <td colspan="2">
-      <img src="./preview-images/theatrix-mobile.png" style="width: 50%; height: auto;" />
-    </td>
-    <td>
-   <img src="./preview-images/theatrix-tablet.png" style="width: 100%; height: auto;" />
-    </td>
-  </tr>
-</table>
+ <img src="./preview-images/theatrix-desktop.png" style="width: 50%; height: auto;" />
+<img src="./preview-images/theatrix-mobile.png" style="width: 10%; height: auto;" />
+
+
 
 
 ## ABOUT
