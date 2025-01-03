@@ -1,7 +1,7 @@
 <script setup>
 import useVuelidate from '@vuelidate/core';
 import { minLength, required } from '@vuelidate/validators';
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
@@ -28,7 +28,7 @@ const formData = ref({
 
 const showPassword = ref(false);
 const loginError = ref('');
-const focusedField = ref('');
+
 
 const validations = computed(() => ({
   username_email: {
@@ -43,23 +43,11 @@ const validations = computed(() => ({
 
 const v$ = useVuelidate(validations, formData);
 
-const isFormInvalid = computed(() =>
-  v$.value.$invalid || Object.values(formData.value).some(field => !field),
-);
-
-function setFocusedField(field) {
-  focusedField.value = field;
-  v$.value.$touch();
-}
-
-function clearFocusedField() {
-  focusedField.value = '';
-}
+const isFormInvalid = computed(() => v$.value.$invalid);
 
 async function handleSubmit() {
-  v$.value.$touch();
 
-  if (!v$.value.$invalid) {
+  if (!isFormInvalid.value) {
     try {
       await authStore.login(formData.value.username_email, formData.value.password);
       router.push('/');
@@ -71,13 +59,11 @@ async function handleSubmit() {
   }
 };
 
+
 function passShowHandler() {
   showPassword.value = !showPassword.value;
 }
 
-watch(formData, () => {
-  v$.value.$touch();
-}, { deep: true });
 </script>
 
 <template>
@@ -98,13 +84,12 @@ watch(formData, () => {
                 name="username_email"
                 :placeholder="t('login.username_email_placeholder')"
                 autocomplete="username_email"
-                @focus="setFocusedField('username_email')"
-                @blur="clearFocusedField"
+                @blur="v$.username_email.$touch()"
               >
               <i class="bx bxs-user" />
             </div>
 
-            <p v-if="focusedField === 'username_email' && v$.username_email.$error" class="error">
+            <p v-if="v$.username_email.$error" class="error">
               {{ t('login.username_email_error') }}
             </p>
 
@@ -115,13 +100,12 @@ watch(formData, () => {
                 name="password"
                 :placeholder="t('login.password_placeholder')"
                 autocomplete="current-password"
-                @focus="setFocusedField('password')"
-                @blur="clearFocusedField"
+                @blur="v$.password.$touch()"
               >
               <i :class="showPassword ? 'bx bxs-lock-open-alt' : 'bx bxs-lock-alt'" style="cursor: pointer" @click="passShowHandler" />
             </div>
 
-            <p v-if="focusedField === 'password' && v$.password.$error" class="error">
+            <p v-if="v$.password.$error" class="error">
               {{ t('login.password_error') }}
             </p>
 

@@ -1,7 +1,7 @@
 <script setup>
 import useVuelidate from '@vuelidate/core';
 import { email, minLength, required, sameAs } from '@vuelidate/validators';
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 import { useI18n } from 'vue-i18n';
 import { useRouter } from 'vue-router';
@@ -32,7 +32,6 @@ const formData = ref({
 const showPassword = ref(false);
 
 const registrationError = ref('');
-const focusedField = ref('');
 
 const validations = computed(() => ({
   username: {
@@ -60,14 +59,11 @@ const validations = computed(() => ({
 
 const v$ = useVuelidate(validations, formData);
 
-const isFormInvalid = computed(() =>
-  v$.value.$invalid || Object.values(formData.value).some(field => !field),
-);
+const isFormInvalid = computed(() => v$.value.$invalid);
 
 async function handleSubmit() {
-  v$.value.$touch();
 
-  if (!v$.value.$invalid) {
+  if (!isFormInvalid.value) {
     try {
       await authStore.register(
         formData.value.username,
@@ -88,17 +84,6 @@ async function handleSubmit() {
   }
 }
 
-function setFocusedField(field) {
-  focusedField.value = field;
-}
-
-function clearFocusedField() {
-  focusedField.value = '';
-}
-
-watch(formData, () => {
-  v$.value.$touch();
-}, { deep: true });
 </script>
 
 <template>
@@ -118,12 +103,11 @@ watch(formData, () => {
                 type="text"
                 name="username"
                 :placeholder="t('register.username_placeholder')"
-                @focus="setFocusedField('username')"
-                @blur="clearFocusedField"
+                @blur="v$.username.$touch()"
               >
               <i class="bx bxs-user" />
             </div>
-            <p v-if="focusedField === 'username' && v$.username.$error" class="error">
+            <p v-if="v$.username.$error" class="error">
               {{ t('register.username_error') }}
             </p>
 
@@ -133,8 +117,7 @@ watch(formData, () => {
                 :type="showPassword ? 'text' : 'password'"
                 name="password"
                 :placeholder="t('register.password_placeholder')"
-                @focus="setFocusedField('password')"
-                @blur="clearFocusedField"
+                @blur="v$.password.$touch()"
               >
               <i
                 :class="showPassword ? 'bx bxs-lock-alt' : 'bx bxs-lock-open-alt'"
@@ -142,7 +125,7 @@ watch(formData, () => {
                 @click="showPassword = !showPassword"
               />
             </div>
-            <p v-if="focusedField === 'password' && v$.password.$error" class="error">
+            <p v-if="v$.password.$error" class="error">
               {{ t('register.password_error') }}
             </p>
 
@@ -152,8 +135,7 @@ watch(formData, () => {
                 :type="showPassword ? 'text' : 'password'"
                 name="repeatPassword"
                 :placeholder="t('register.repeat_password_placeholder')"
-                @focus="setFocusedField('repeatPassword')"
-                @blur="clearFocusedField"
+                 @blur="v$.repeatPassword.$touch()"
               >
 
               <i
@@ -162,7 +144,7 @@ watch(formData, () => {
                 @click="showPassword = !showPassword"
               />
             </div>
-            <p v-if="focusedField === 'repeatPassword' && v$.repeatPassword.$error" class="error">
+            <p v-if="v$.repeatPassword.$error" class="error">
               {{ t('register.repeat_password_error') }}
             </p>
 
@@ -172,12 +154,11 @@ watch(formData, () => {
                 type="email"
                 name="email"
                 :placeholder="t('register.email_placeholder')"
-                @focus="setFocusedField('email')"
-                @blur="clearFocusedField"
+                 @blur="v$.email.$touch()"
               >
               <i class="bx bx-mail-send" />
             </div>
-            <p v-if="focusedField === 'email' && v$.email.$error" class="error">
+            <p v-if="v$.email.$error" class="error">
               {{ t('register.email_error') }}
             </p>
 
@@ -187,12 +168,11 @@ watch(formData, () => {
                 type="text"
                 name="city"
                 :placeholder="t('register.city_placeholder')"
-                @focus="setFocusedField('city')"
-                @blur="clearFocusedField"
+                @blur="v$.city.$touch()"
               >
               <i class="bx bxs-map" />
             </div>
-            <p v-if="focusedField === 'city' && v$.city.$error" class="error">
+            <p v-if="v$.city.$error" class="error">
               {{ t('register.city_error') }}
             </p>
 
@@ -202,7 +182,7 @@ watch(formData, () => {
 
             <button
               type="submit"
-              class="btn" :class="[{ 'btn-disabled': isFormInvalid }]"
+              class="btn"
               :disabled="isFormInvalid"
               :style="{
                 backgroundColor: isFormInvalid ? 'grey' : '',
