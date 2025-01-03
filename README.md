@@ -21,8 +21,17 @@
 
 </div>
 
-<img src="./preview-images/theatrix-mobile.png" width="20%" />
-<img src="./preview-images/theatrix-tablet.png" width="60%" />
+<table style="width: 100%; border-collapse: collapse; text-align: center;">
+  <tr>
+    <td colspan="2">
+      <img src="./preview-images/theatrix-mobile.png" style="width: 50%; height: auto;" />
+    </td>
+    <td>
+   <img src="./preview-images/theatrix-tablet.png" style="width: 100%; height: auto;" />
+    </td>
+  </tr>
+</table>
+
 
 ## ABOUT
 
