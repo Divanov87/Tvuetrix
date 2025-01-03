@@ -547,25 +547,49 @@ Server and client are configured to work on localhost. Server (Express REST API)
 
 ## SCREENSHOTS
 
-<div style="display: grid; gap: 16px;">
-  <div style="grid-column: span 3;">
-    <img src="./preview-images/screenshots/0.webp" alt="Screenshot 0" style="width: 100%; height: auto;" />
-  </div>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-    <img src="./preview-images/screenshots/1.webp" alt="Screenshot 1" style="width: 100%; height: auto;" />
-    <img src="./preview-images/screenshots/2.webp" alt="Screenshot 2" style="width: 100%; height: auto;" />
-    <img src="./preview-images/screenshots/3.webp" alt="Screenshot 3" style="width: 100%; height: auto;" />
-  </div>
-  <div style="grid-column: span 3;">
-    <img src="./preview-images/screenshots/4.webp" alt="Screenshot 4" style="width: 100%; height: auto;" />
-  </div>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-    <img src="./preview-images/screenshots/5.webp" alt="Screenshot 5" style="width: 100%; height: auto;" />
-    <img src="./preview-images/screenshots/6.webp" alt="Screenshot 6" style="width: 100%; height: auto;" />
-    <img src="./preview-images/screenshots/7.webp" alt="Screenshot 7" style="width: 100%; height: auto;" />
-  </div>
-  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-    <img src="./preview-images/screenshots/8.webp" alt="Screenshot 8" style="width: 100%; height: auto;" />
-    <img src="./preview-images/screenshots/9.webp" alt="Screenshot 9" style="width: 100%; height: auto;" />
-  </div>
-</div>
+
+<table style="width: 100%; border-collapse: collapse; text-align: center;">
+  <tr>
+    <td colspan="3">
+      <img src="./preview-images/screenshots/0.webp" alt="Screenshot 0" style="width: 100%; height: auto;" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./preview-images/screenshots/1.webp" alt="Screenshot 1" style="width: 100%; height: auto;" />
+    </td>
+    <td>
+      <img src="./preview-images/screenshots/2.webp" alt="Screenshot 2" style="width: 100%; height: auto;" />
+    </td>
+    <td>
+      <img src="./preview-images/screenshots/3.webp" alt="Screenshot 3" style="width: 100%; height: auto;" />
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <img src="./preview-images/screenshots/4.webp" alt="Screenshot 4" style="width: 100%; height: auto;" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="./preview-images/screenshots/5.webp" alt="Screenshot 5" style="width: 100%; height: auto;" />
+    </td>
+    <td>
+      <img src="./preview-images/screenshots/6.webp" alt="Screenshot 6" style="width: 100%; height: auto;" />
+    </td>
+    <td>
+      <img src="./preview-images/screenshots/7.webp" alt="Screenshot 7" style="width: 100%; height: auto;" />
+    </td>
+  </tr>
+  <tr>
+   <td>
+      <img src="./preview-images/screenshots/8.webp" alt="Screenshot 8" style="width: 100%; height: auto;" />
+    </td>
+    <td>
+      <img src="./preview-images/screenshots/9.webp" alt="Screenshot 9" style="width: 100%; height: auto;" />
+    </td>
+    <td>
+      <img src="./preview-images/screenshots/10.webp" alt="Screenshot 9" style="width: 100%; height: auto;" />
+    </td>
+  </tr>
+</table>
