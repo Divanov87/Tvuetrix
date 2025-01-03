@@ -14,6 +14,7 @@ import EventAdd from '../views/events/event-add/EventAdd.vue';
 import EventCatalog from '../views/events/event-catalog/EventCatalog.vue';
 import EventConcerts from '../views/events/event-concerts/EventConcerts.vue';
 import EventDetails from '../views/events/event-details/EventDetails.vue';
+import EventEdit from '../views/events/event-edit/EventEdit.vue';
 import EventTheater from '../views/events/event-theater/EventTheater.vue';
 import Profile from '../views/profile/Profile.vue';
 import Search from '../views/search/Search.vue';
@@ -30,6 +31,7 @@ const routes = [
       { path: 'concerts', component: EventConcerts, name: 'EventConcerts' },
       { path: 'add', component: EventAdd, name: 'EventAdd' },
       { path: ':eventId/details', component: EventDetails, name: 'EventDetails' },
+      { path: ':eventId/edit', component: EventEdit, name: 'EventEdit' },
     ],
   },
   {
