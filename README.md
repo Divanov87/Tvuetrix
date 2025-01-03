@@ -23,7 +23,7 @@
 
 <div style="display: flex; align-items: center;">
   <img src="./preview-images/theatrix-desktop.png" alt="Desktop Preview" style="width: 80%; height: auto;" />
-  <img src="./preview-images/theatrix-mobile.png" alt="Mobile Preview" style="width: 20%; height: auto;" />
+  <img src="./preview-images/theatrix-mobile.png" alt="Mobile Preview" style="width: 15%; height: auto;" />
 </div>
 
 
