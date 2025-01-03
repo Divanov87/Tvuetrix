@@ -378,7 +378,7 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <td style="height: 22px; width: 18.6333px;" align="center">PUT</td>
 <td style="height: 22px; width: 408px;">
 <p>Updates/edits current user comment* </p>
-<p>*User can edit only his own comments, Administrators can edit all users messages</p>
+<p>*User can edit only his own comments, Administrators can edit all users comments</p>
 </td>
 <td style="height: 22px; width: 73px;" align="center">❌</td>
 <td style="height: 22px; width: 74px;" align="center"><span style="font-family: Arial, Helvetica, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">✔️</span></td>
@@ -389,7 +389,7 @@ Server and client are configured to work on localhost. Server (Express REST API)
 <td style="height: 22px; width: 18.6333px;" align="center">DELETE</td>
 <td style="height: 22px; width: 408px;">
 <p style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: medium; font-family: Arial, Helvetica, sans-serif;">Deletes current user comment** </p>
-<p style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: medium; font-family: Arial, Helvetica, sans-serif;">**User can delete only his own comments, Administrators can delete all users messages</p>
+<p style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; font-size: medium; font-family: Arial, Helvetica, sans-serif;">**User can delete only his own comments, Administrators can delete all users comments</p>
 </td>
 <td style="height: 22px; width: 73px;" align="center">❌</td>
 <td style="height: 22px; width: 74px;" align="center"><span style="font-family: Arial, Helvetica, sans-serif; font-size: medium; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400;">✔️</span></td>
