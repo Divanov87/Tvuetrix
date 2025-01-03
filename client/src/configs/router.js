@@ -10,6 +10,7 @@ import Login from '../views/auth/Login.vue';
 import Register from '../views/auth/Register.vue';
 import Contacts from '../views/Contacts.vue';
 import Dashboard from '../views/dashboard/Dashboard.vue';
+import EventAdd from '../views/events/event-add/EventAdd.vue';
 import EventCatalog from '../views/events/event-catalog/EventCatalog.vue';
 import EventConcerts from '../views/events/event-concerts/EventConcerts.vue';
 import EventDetails from '../views/events/event-details/EventDetails.vue';
@@ -27,8 +28,8 @@ const routes = [
     children: [
       { path: 'theater', component: EventTheater, name: 'EventTheater' },
       { path: 'concerts', component: EventConcerts, name: 'EventConcerts' },
+      { path: 'add', component: EventAdd, name: 'EventAdd' },
       { path: ':eventId/details', component: EventDetails, name: 'EventDetails' },
-
     ],
   },
   {
