@@ -36,7 +36,7 @@
 
 Theatrix as a **PWA (Progressive Web App)** can be seen in action at this address:
 
-<div align="center" style="color:red; font-size: 23px; font-weight: bold">https://theatrix-vue.vercel.app</div>
+<div align="center" style="color:red; font-size: 23px; font-weight: bold">https://theatrix.vercel.app</div>
 
 ## PROJECT HIGHLIGHTS
 
