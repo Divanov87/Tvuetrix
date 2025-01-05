@@ -140,7 +140,7 @@ onBeforeUnmount(() => {
             </li>
           </template>
 
-          <li>
+          <!-- <li>
             <router-link to="/gallery" class="navbar-link">
               {{ t('Gallery') }}
             </router-link>
@@ -149,7 +149,7 @@ onBeforeUnmount(() => {
             <router-link to="/blog" class="navbar-link">
               {{ t('Blog') }}
             </router-link>
-          </li>
+          </li> -->
           <li>
             <router-link to="/contacts" class="navbar-link">
               {{ t('Contacts') }}
