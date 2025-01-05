@@ -138,6 +138,9 @@ const resources = {
       form_error: 'Please fix the errors in the form before submitting.',
       send_button: 'Send',
     },
+    about: {
+      title: 'About',
+    },
     admin: {
       section_subtitle: 'Administrators',
       title1: 'User',
@@ -322,6 +325,9 @@ const resources = {
     submission_error: 'Грешка при изпращане на съобщението',
     form_error: 'Моля, коригирайте грешките във формуляра преди да изпратите.',
     send_button: 'Изпрати',
+  },
+  about: {
+    title: 'За нас',
   },
   admin: {
     section_subtitle: 'Администратори',
