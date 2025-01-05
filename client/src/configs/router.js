@@ -1,8 +1,11 @@
 import { computed } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
+
 import NotFound from '../components/not-found/NotFound.vue';
 
 import { useAuthStore } from '../store/authStore';
+
+import About from '../views/About.vue';
 import AdminPanel from '../views/admin-panel/AdminPanel.vue';
 import Bulletin from '../views/admin-panel/components/Bulletin.vue';
 import Messages from '../views/admin-panel/components/Messages.vue';
@@ -20,8 +23,6 @@ import EventTheater from '../views/events/event-theater/EventTheater.vue';
 import Profile from '../views/profile/Profile.vue';
 import Search from '../views/search/Search.vue';
 
-
-
 async function isAuth() {
   const authStore = useAuthStore();
   await authStore.setUserFromToken();
@@ -35,7 +36,7 @@ async function validateUser() {
   const user = computed(() => authStore.user);
   return user.value?.role === 'user'
     ? true
-    : { path: '/' };
+    : { path: '/auth/login' };
 }
 
 async function validateAdmin() {
@@ -80,9 +81,9 @@ const routes = [
   { path: '/search', component: Search, name: 'Search', beforeEnter: isAuth },
   { path: '/profile', component: Profile, name: 'Profile', beforeEnter: validateUser },
   { path: '/contacts', component: Contacts, name: 'Contacts' },
+  { path: '/about', component: About, name: 'About' },
   { path: '/:pathMatch(.*)*', component: NotFound, name: 'NotFound' },
 ];
-
 
 const router = createRouter({
   history: createWebHistory(),
