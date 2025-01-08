@@ -1,24 +1,28 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import Loader from '../../../components/Loader.vue';
 import { deleteMessage, getMessages } from '../../../dataProvider/message';
 import { formatDateAdmin } from '../../../libs/dateFormatter';
 
 const { t } = useI18n();
 
 const messages = ref([]);
+const isLoading = ref(true);
 
 async function fetchMessages() {
+  isLoading.value = true;
   try {
     const response = await getMessages();
     const sortedMessages = response.sort((a, b) => new Date(b.messageDate) - new Date(a.messageDate));
     messages.value = sortedMessages;
+    isLoading.value = false;
   }
   catch (err) {
     alert(t('error.fetching_messages')) && console.log(err);
+    isLoading.value = false;
   }
 }
-
 
 async function handleDelete(messageId) {
   try {
@@ -26,7 +30,7 @@ async function handleDelete(messageId) {
     messages.value = messages.value.filter(msg => msg._id !== messageId);
   }
   catch (err) {
-   alert(t('error.deleting_message')) && console.log(err);
+    alert(t('error.deleting_message')) && console.log(err);
   }
 }
 
@@ -44,7 +48,8 @@ onMounted(() => {
       <h2 class="h2 section-title">
         {{ t('admin.messages.title1') }} <strong>{{ t('admin.messages.title2') }}</strong>
       </h2>
-      <div class="container">
+      <Loader v-if="isLoading" />
+      <div v-else class="container">
         <table class="user-table">
           <thead>
             <tr>

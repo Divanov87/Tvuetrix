@@ -89,9 +89,9 @@ function sort(column) {
       <h2 class="h2 section-title">
         {{ t('admin.title1') }} <strong>{{ t('admin.title2') }}</strong>
       </h2>
-      <div v-if="isLoading">
-        <Loader />
-      </div>
+   
+      <Loader v-if="isLoading"/>
+
       <div v-else class="container">
         <table class="user-table">
           <thead>

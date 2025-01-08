@@ -2,6 +2,7 @@
 import Swal from 'sweetalert2';
 import { onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import Loader from '../../../components/Loader.vue';
 import { getBulletins, removeBulletin } from '../../../dataProvider/bulletin';
 import { formatDateAdmin } from '../../../libs/dateFormatter';
 import { useAuthStore } from '../../../store/authStore';
@@ -11,14 +12,18 @@ const { t } = useI18n();
 
 const bulletins = ref([]);
 const message = ref('');
+const isLoading = ref(true);
 
 async function fetchBulletins() {
+  isLoading.value = true;
   try {
     const response = await getBulletins();
     bulletins.value = response;
+    isLoading.value = false;
   }
   catch (error) {
     message.value = t('error.fetching_bulletins') && console.log(error);
+    isLoading.value = false;
   }
 }
 
@@ -92,7 +97,8 @@ onMounted(() => {
       <p v-if="message" class="error">
         {{ message }}
       </p>
-      <div class="container">
+      <Loader v-if="isLoading"/>
+      <div v-else class="container">
         <table class="user-table">
           <thead>
             <tr>
