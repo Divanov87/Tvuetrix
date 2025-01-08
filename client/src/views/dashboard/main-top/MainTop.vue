@@ -105,7 +105,7 @@ watch(locale, () => {
         <div class="meta-wrapper">
           <div class="ganre-wrapper">
             <i class="bx bxs-map" />
-            <router-link to="/search?location=varna">
+            <!-- <router-link to="/search?location=varna">
               {{ t('main_top.city.varna') }}
             </router-link> |
             <router-link to="/search?location=bourgas">
@@ -117,12 +117,24 @@ watch(locale, () => {
             <router-link to="/search?location=sofia">
               {{ t('main_top.city.sofia') }}
             </router-link> |
-            <!-- <router-link to="/search?location=london">
+             <router-link to="/search?location=london">
               {{ t('main_top.city.london') }}
             </router-link> -->
+            <router-link :to="{ path: '/search', query: { location: 'varna' }, hash: '#city' }">
+              {{ t('main_top.city.varna') }}
+            </router-link> |
+            <router-link :to="{ path: '/search', query: { location: 'bourgas' }, hash: '#city' }">
+              {{ t('main_top.city.bourgas') }}
+            </router-link> |
+            <router-link :to="{ path: '/search', query: { location: 'plovdiv' }, hash: '#city' }">
+              {{ t('main_top.city.plovdiv') }}
+            </router-link> |
+            <router-link :to="{ path: '/search', query: { location: 'sofia' }, hash: '#city' }">
+              {{ t('main_top.city.sofia') }}
+            </router-link> |
             <router-link :to="{ path: '/search', query: { location: 'london' }, hash: '#city' }">
-  {{ t('main_top.city.london') }}
-</router-link>
+              {{ t('main_top.city.london') }}
+            </router-link>
           </div>
         </div>
 
