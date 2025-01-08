@@ -57,9 +57,7 @@ onMounted(fetchEvents);
         <FilterList @filter-city="handleCityFilter" />
       </div>
 
-      <div v-if="isLoading">
-        <Loader />
-      </div>
+      <Loader v-if="isLoading" />
 
       <div v-else-if="error">
         <h2 class="h2 section-title">
