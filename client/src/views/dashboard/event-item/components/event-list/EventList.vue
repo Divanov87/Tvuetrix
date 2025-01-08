@@ -1,6 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue';
 import FilterList from '../../../../../components/FilterList.vue';
+import Loader from '../../../../../components/Loader.vue';
 import { useLocation } from '../../../../../libs/useLocation';
 import { useAuthStore } from '../../../../../store/authStore';
 import EventCard from '../../../../events/components/event-card/EventCard.vue';
@@ -13,6 +14,10 @@ const props = defineProps({
   title: {
     type: String,
     required: true,
+  },
+  isLoading: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -75,15 +80,17 @@ function handleCityFilter(city) {
         </div>
         <FilterList v-if="!isLogged && !cityFromLocation" @filter-city="handleCityFilter" />
       </div>
+      <Loader v-if="isLoading" />
+      <template v-else>
+        <ul v-if="filteredEvents.length" class="movies-list has-scrollbar">
+          <EventCard v-for="event in filteredEvents" :key="event._id" v-bind="event" />
+        </ul>
 
-      <ul v-if="filteredEvents.length" class="movies-list has-scrollbar">
-        <EventCard v-for="event in filteredEvents" :key="event._id" v-bind="event" />
-      </ul>
-
-      <h2 v-else class="h2 section-title">
-        There are no upcoming events in
-        <b style="text-transform: capitalize;">{{ displayCity }}</b>!
-      </h2>
+        <h2 v-else class="h2 section-title">
+          There are no upcoming events in
+          <b style="text-transform: capitalize;">{{ displayCity }}</b>!
+        </h2>
+      </template>
     </div>
   </section>
 </template>

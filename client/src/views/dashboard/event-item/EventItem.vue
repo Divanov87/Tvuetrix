@@ -1,6 +1,5 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import Loader from '../../../components/Loader.vue';
 import { getAllEventsData } from '../../../dataProvider/event';
 import EventList from './components/event-list/EventList.vue';
 import MainPinned from './components/main-pinned/MainPinned.vue';
@@ -23,11 +22,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Loader v-if="isLoading" />
-  <div v-else>
     <MainPinned :latest-pins="eventsData.latestPins" :is-loading="isLoading" />
-    <EventList :events="eventsData.topRatedEvents" title="Top Rated" />
-    <EventList :events="eventsData.theaterEvents" title="Performances" />
-    <EventList :events="eventsData.concertEvents" title="Concerts" />
-  </div>
+    <EventList :events="eventsData.topRatedEvents" title="Top Rated" :is-loading="isLoading" />
+    <EventList :events="eventsData.theaterEvents" title="Performances" :is-loading="isLoading" />
+    <EventList :events="eventsData.concertEvents" title="Concerts" :is-loading="isLoading" />
 </template>

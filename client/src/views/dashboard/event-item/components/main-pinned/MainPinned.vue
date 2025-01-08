@@ -19,9 +19,9 @@ defineProps({
     <div class="container">
       <p class="section-subtitle">Latest</p>
       <h2 class="h2 section-title">Pinned <strong>Events</strong></h2>
-      <div v-if="isLoading">
-        <Loader />
-      </div>
+  
+      <Loader v-if="isLoading"/>
+
       <ul v-else class="movies-list">
         <template v-if="latestPins.length > 0">
           <EventCard v-for="event in latestPins" :key="event._id" v-bind="event" />
