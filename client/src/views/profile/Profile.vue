@@ -1,4 +1,5 @@
 <script setup>
+import Cookies from 'js-cookie';
 import { jwtDecode } from 'jwt-decode';
 import { onMounted, ref } from 'vue';
 import Loader from '../../components/Loader.vue';
@@ -15,10 +16,8 @@ const user = authStore.user;
 
 async function fetchUserEvents() {
   try {
-    const token = document.cookie
-      .split('; ')
-      .find(row => row.startsWith('user='))
-      ?.split('=')[1];
+    
+    const token = Cookies.get('user');
 
     if (!token) {
       console.error('No token found.');
