@@ -52,38 +52,63 @@ async function validateAdmin() {
 const routes = [
   { path: '/', component: Dashboard, name: 'Dashboard' },
   { path: '/events', component: EventCatalog, name: 'EventCatalog' },
-  {
-    path: '/events',
-    children: [
-      { path: 'theater', component: EventTheater, name: 'EventTheater' },
-      { path: 'concerts', component: EventConcerts, name: 'EventConcerts' },
-      { path: 'add', component: EventAdd, name: 'EventAdd', beforeEnter: validateAdmin },
-      { path: ':eventId/details', component: EventDetails, name: 'EventDetails' },
-      { path: ':eventId/edit', component: EventEdit, name: 'EventEdit', beforeEnter: validateAdmin },
-    ],
-  },
-  {
-    path: '/auth',
-    children: [
-      { path: 'login', component: Login, name: 'Login' },
-      { path: 'register', component: Register, name: 'Register' },
-    ],
-  },
-  { path: '/admin-panel', component: AdminPanel, beforeEnter: validateAdmin },
-  {
-    path: '/admin-panel',
-    children: [
-      { path: 'users', component: Users, name: 'AdminUsers' },
-      { path: 'messages', component: Messages, name: 'AdminMessages' },
-      { path: 'bulletin', component: Bulletin, name: 'AdminBulletin' },
-    ],
-  },
+  { path: '/events/theater', component: EventTheater, name: 'EventTheater' },
+  { path: '/events/concerts', component: EventConcerts, name: 'EventConcerts' },
+  { path: '/events/add', component: EventAdd, name: 'EventAdd', beforeEnter: validateAdmin },
+  { path: '/events/:eventId/details', component: EventDetails, name: 'EventDetails' },
+  { path: '/events/:eventId/edit', component: EventEdit, name: 'EventEdit', beforeEnter: validateAdmin },
+  { path: '/auth/login', component: Login, name: 'Login' },
+  { path: '/auth/register', component: Register, name: 'Register' },
+  { path: '/admin-panel', component: AdminPanel,  name: 'AdminPanel', beforeEnter: validateAdmin },
+  { path: '/admin-panel/users', component: Users, name: 'AdminUsers' },
+  { path: '/admin-panel/messages', component: Messages, name: 'AdminMessages' },
+  { path: '/admin-panel/bulletin', component: Bulletin, name: 'AdminBulletin' },
   { path: '/search', component: Search, name: 'Search', beforeEnter: isAuth },
   { path: '/profile', component: Profile, name: 'Profile', beforeEnter: validateUser },
   { path: '/contacts', component: Contacts, name: 'Contacts' },
   { path: '/about', component: About, name: 'About' },
   { path: '/:pathMatch(.*)*', component: NotFound, name: 'NotFound' },
 ];
+
+
+
+// Works but its a bit hacky/wrong?
+
+// const routes = [
+//   { path: '/', component: Dashboard, name: 'Dashboard' },
+//   { path: '/events', component: EventCatalog, name: 'EventCatalog' },
+//   {
+//     path: '/events',
+//     children: [
+//       { path: 'theater', component: EventTheater, name: 'EventTheater' },
+//       { path: 'concerts', component: EventConcerts, name: 'EventConcerts' },
+//       { path: 'add', component: EventAdd, name: 'EventAdd', beforeEnter: validateAdmin },
+//       { path: ':eventId/details', component: EventDetails, name: 'EventDetails' },
+//       { path: ':eventId/edit', component: EventEdit, name: 'EventEdit', beforeEnter: validateAdmin },
+//     ],
+//   },
+//   {
+//     path: '/auth',
+//     children: [
+//       { path: 'login', component: Login, name: 'Login' },
+//       { path: 'register', component: Register, name: 'Register' },
+//     ],
+//   },
+//   { path: '/admin-panel', component: AdminPanel, beforeEnter: validateAdmin },
+//   {
+//     path: '/admin-panel',
+//     children: [
+//       { path: 'users', component: Users, name: 'AdminUsers' },
+//       { path: 'messages', component: Messages, name: 'AdminMessages' },
+//       { path: 'bulletin', component: Bulletin, name: 'AdminBulletin' },
+//     ],
+//   },
+//   { path: '/search', component: Search, name: 'Search', beforeEnter: isAuth },
+//   { path: '/profile', component: Profile, name: 'Profile', beforeEnter: validateUser },
+//   { path: '/contacts', component: Contacts, name: 'Contacts' },
+//   { path: '/about', component: About, name: 'About' },
+//   { path: '/:pathMatch(.*)*', component: NotFound, name: 'NotFound' },
+// ];
 
 const router = createRouter({
   history: createWebHistory(),
