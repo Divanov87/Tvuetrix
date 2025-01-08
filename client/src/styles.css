@@ -647,3 +647,10 @@ html {
   margin: 0;
   padding: 0;
 }
+
+address {
+  font-style: initial;
+}
+address:hover {
+  text-decoration: underline;
+}

@@ -357,7 +357,10 @@ function DeleteDialog() {
               <div class="date-time">
                 <div class="location-badge" style="text-transform: capitalize">
                   <i class="bx bxs-map" />
-                  <time>{{ event?.location }}</time>
+                    <router-link :to="`/search?location=${event?.location}#city`">
+                      <address>{{ event?.location }}</address>
+                    </router-link>
+                  <!-- <address>{{ event?.location }}</address> -->
                 </div>
                 |
                 <div>
