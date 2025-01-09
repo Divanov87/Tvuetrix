@@ -77,6 +77,7 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 * i18next-browser-languagedetector
 * vue-recaptcha
 * sweetalert2
+* apexcharts
 
 ## ACTIONS
 
