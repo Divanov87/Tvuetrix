@@ -17,6 +17,7 @@ import Dashboard from '../views/dashboard/Dashboard.vue';
 import EventAdd from '../views/events/event-add/EventAdd.vue';
 import EventCatalog from '../views/events/event-catalog/EventCatalog.vue';
 import EventConcerts from '../views/events/event-concerts/EventConcerts.vue';
+import EventCharts from '../views/events/event-details/event-charts/EventCharts.vue';
 import EventDetails from '../views/events/event-details/EventDetails.vue';
 import EventEdit from '../views/events/event-edit/EventEdit.vue';
 import EventTheater from '../views/events/event-theater/EventTheater.vue';
@@ -55,11 +56,24 @@ const routes = [
   { path: '/events/theater', component: EventTheater, name: 'EventTheater' },
   { path: '/events/concerts', component: EventConcerts, name: 'EventConcerts' },
   { path: '/events/add', component: EventAdd, name: 'EventAdd', beforeEnter: validateAdmin },
-  { path: '/events/:eventId/details', component: EventDetails, name: 'EventDetails' },
+  // { path: '/events/:eventId/details', component: EventDetails, name: 'EventDetails' },
+  {
+    path: '/events/:eventId/details',
+    name: 'EventDetails',
+    component: EventDetails,
+    children: [
+      {
+        path: 'charts',
+        name: 'EventCharts',
+        component: EventCharts,
+        beforeEnter: validateAdmin
+      },
+    ],
+  },
   { path: '/events/:eventId/edit', component: EventEdit, name: 'EventEdit', beforeEnter: validateAdmin },
   { path: '/auth/login', component: Login, name: 'Login' },
   { path: '/auth/register', component: Register, name: 'Register' },
-  { path: '/admin-panel', component: AdminPanel,  name: 'AdminPanel', beforeEnter: validateAdmin },
+  { path: '/admin-panel', component: AdminPanel, name: 'AdminPanel', beforeEnter: validateAdmin },
   { path: '/admin-panel/users', component: Users, name: 'AdminUsers' },
   { path: '/admin-panel/messages', component: Messages, name: 'AdminMessages' },
   { path: '/admin-panel/bulletin', component: Bulletin, name: 'AdminBulletin' },
@@ -69,8 +83,6 @@ const routes = [
   { path: '/about', component: About, name: 'About' },
   { path: '/:pathMatch(.*)*', component: NotFound, name: 'NotFound' },
 ];
-
-
 
 // Works but its a bit hacky/wrong?
 
