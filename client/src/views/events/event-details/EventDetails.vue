@@ -19,8 +19,10 @@ import { formatDate } from '../../../libs/dateFormatter.js';
 
 import { shareContent } from '../../../libs/userShare.js';
 import { useAuthStore } from '../../../store/authStore.js';
+
 import EventComments from './event-comments/EventComments.vue';
 import EventMeta from './event-meta/EventMeta.vue';
+
 
 const route = useRoute();
 const router = useRouter();
@@ -34,6 +36,7 @@ const showAll = ref(false);
 const textButton = ref('[Read More]');
 
 const currentUrl = ref('');
+const showChartsState = ref(false);
 
 const user = authStore.user;
 const isLogged = authStore.isLogged;
@@ -82,38 +85,38 @@ async function fetchEvent() {
 }
 
 async function BuyTickets() {
-      if (user?.role === 'user') {
-        try {
-          await buyTickets(eventData);
-          const updatedEvent = await getEvent(eventId.value);
-          event.value = updatedEvent;
-        }
-        catch (error) {
-          console.error('Error buying tickets:', error);
-        }
-      }
-    };
+  if (user?.role === 'user') {
+    try {
+      await buyTickets(eventData);
+      const updatedEvent = await getEvent(eventId.value);
+      event.value = updatedEvent;
+    }
+    catch (error) {
+      console.error('Error buying tickets:', error);
+    }
+  }
+};
 
-    function BuyDialog() {
-      if (user?.role === 'user') {
-        Swal.fire({
-          title: 'Confirm buying tickets',
-          // text: 'Are you sure you want to buy tickets for \n' + event.name + ' ?',
-          html: `Are you sure you want to buy tickets for <br> <b style="color: white">"${event.value?.name}"</b> ?`,
-          icon: 'question',
-          showCancelButton: true,
-          confirmButtonText: 'YES, buy tickets',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            BuyTickets();
-            Swal.fire('Tickets bought successfully!', '', 'success');
-          }
-        });
+function BuyDialog() {
+  if (user?.role === 'user') {
+    Swal.fire({
+      title: 'Confirm buying tickets',
+      // text: 'Are you sure you want to buy tickets for \n' + event.name + ' ?',
+      html: `Are you sure you want to buy tickets for <br> <b style="color: white">"${event.value?.name}"</b> ?`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'YES, buy tickets',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        BuyTickets();
+        Swal.fire('Tickets bought successfully!', '', 'success');
       }
-      else {
-        Swal.fire('No rights to buy tickets!', '', 'error');
-      }
-    };
+    });
+  }
+  else {
+    Swal.fire('No rights to buy tickets!', '', 'error');
+  }
+};
 
 
 async function LikeEvent() {
@@ -325,6 +328,20 @@ function DeleteDialog() {
     Swal.fire('Not Authorized!', '', 'error');
   }
 }
+
+// function showCharts() {
+//   router.push({ name: 'EventCharts', params: { eventId: eventId.value } });
+// }
+
+function showCharts() {
+  if (showChartsState.value) {
+    router.push({ name: 'EventDetails', params: { eventId: eventId.value } });
+  } else {
+    router.push({ name: 'EventCharts', params: { eventId: eventId.value } });
+  }
+
+  showChartsState.value = !showChartsState.value;
+}
 </script>
 
 <template>
@@ -346,7 +363,8 @@ function DeleteDialog() {
 
           <div class="movie-detail-content">
             <p class="detail-subtitle">
-              <b class="badge badge-fill">{{ event?.genre }}</b> <b class="badge badge-outline">{{ event?.restriction }}+</b>
+              <b class="badge badge-fill">{{ event?.genre }}</b> <b class="badge badge-outline">{{ event?.restriction
+                }}+</b>
             </p>
 
             <h1 class="h1 detail-title" style="text-transform: uppercase">
@@ -357,9 +375,9 @@ function DeleteDialog() {
               <div class="date-time">
                 <div class="location-badge" style="text-transform: capitalize">
                   <i class="bx bxs-map" />
-                    <router-link :to="`/search?location=${event?.location}#city`">
-                      <address>{{ event?.location }}</address>
-                    </router-link>
+                  <router-link :to="`/search?location=${event?.location}#city`">
+                    <address>{{ event?.location }}</address>
+                  </router-link>
                   <!-- <address>{{ event?.location }}</address> -->
                 </div>
                 |
@@ -397,18 +415,33 @@ function DeleteDialog() {
                 </router-link>
 
                 <button class="share" @click="event?.pinsList?.length ? UnpinDialog() : PinDialog()">
-                  <i :class="`bx ${event?.pinsList?.length ? 'bxs-bell-ring bx-tada admin-pin' : 'bx-bell bx-tada-hover admin'} box-details`" />
+                  <i
+                    :class="`bx ${event?.pinsList?.length ? 'bxs-bell-ring bx-tada admin-pin' : 'bx-bell bx-tada-hover admin'} box-details`" />
                   <span>{{ event?.pinsList?.length ? 'Pinned!' : 'Pin' }}</span>
                 </button>
 
                 <button class="share" @click="CloneEvent">
-                  <i :class="`bx ${event?.name?.includes('_') ? 'bxs-error bx-flashing' : 'bx-copy-alt'} admin box-details`" />
+                  <i
+                    :class="`bx ${event?.name?.includes('_') ? 'bxs-error bx-flashing' : 'bx-copy-alt'} admin box-details`" />
                   <span>{{ event?.name?.includes('_') ? 'Cloned!' : 'Clone' }}</span>
                 </button>
 
                 <button class="share">
                   <i class="bx bxs-coupon admin admin-coupon box-details" />
                   <span>{{ event?.ticketsLeft - 1 }}</span>
+                </button>
+
+                <!-- <span>{{  event?.likesList?.length ? event?.likesList?.length : 'n/a' }}</span>
+                <span>{{ event?.buysList?.length ? event?.buysList?.length : 'n/a' }}</span> -->
+
+                <!-- <button class="share" @click="showCharts">
+                  <i class='bx bxs-pie-chart-alt-2 admin box-details' />
+                  <span>Stats</span>
+                </button> -->
+
+                <button class="share" @click="showCharts">
+                  <i :class="[showChartsState ? 'bx bx-pie-chart-alt-2 admin box-details' : 'bx bxs-pie-chart-alt-2 admin box-details']" />
+                  <span>{{ showChartsState ? 'Hide' : 'Stats' }}</span>
                 </button>
 
                 <button class="share" @click="DeleteDialog">
@@ -433,22 +466,21 @@ function DeleteDialog() {
                   <span>{{ event?.ticketsLeft - 1 }}</span>
                 </button>
 
-                <button
-                  :class="event?.ticketsLeft - 1 > 0 ? 'btn btn-primary' : 'sold-out'"
-                  @click="event?.ticketsLeft - 1 > 0 ? BuyDialog() : undefined"
-                >
+                <button :class="event?.ticketsLeft - 1 > 0 ? 'btn btn-primary' : 'sold-out'" @click="event?.ticketsLeft - 1 > 0 ? BuyDialog() : undefined">
                   {{ event?.ticketsLeft - 1 > 0 ? 'Buy Tickets' : 'Sold out' }}
                 </button>
               </template>
             </div>
           </div>
           <div class="download-btn">
-            <QRCodeVue
-              :value="currentUrl" :size="125" level="M" background="#fff"
-              foreground="#e60a15"
-            />
+            <QRCodeVue :value="currentUrl" :size="125" level="M" background="#fff" foreground="#e60a15" />
             <span class="qr"><span>Scan me!</span></span>
           </div>
+        </div>
+      </template>
+      <template v-if="user?.role === 'admin'">
+        <div class="container">
+        <router-view :likes-list="event?.likesList" :buys-list="event?.buysList" :tickets-left="event?.ticketsLeft" />
         </div>
       </template>
     </section>
