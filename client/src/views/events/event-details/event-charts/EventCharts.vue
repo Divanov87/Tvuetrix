@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from 'vue';
 
-
 const props = defineProps({
     likesList: {
         type: Array,
@@ -12,7 +11,7 @@ const props = defineProps({
         required: true,
     },
     ticketsLeft: {
-        type: String,
+        type: Number,
         required: true,
     }
 });
