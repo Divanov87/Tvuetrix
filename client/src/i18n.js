@@ -88,6 +88,20 @@ const resources = {
       general_error: 'An error occurred. Please try again.',
       enter_email_placeholder: 'Enter your email..',
     },
+    catalog: {
+      latest: 'Latest',
+      theater_music_performances: 'Theater & Music <strong>Performances</strong>',
+      music_concerts: 'Music <strong>Concerts</strong>',
+      theater_performances: 'Music <strong>Concerts</strong>',
+      location: 'City',
+      year: 'Year',
+      search: 'Search',
+      looking_for: 'What Are You Looking For <strong>Today</strong>?',
+      search_for: 'Search...',
+      results: 'No search results found!',
+      events: 'No events found!'
+
+    },
     login: {
       title: 'Login',
       subtitle: 'Please, enter your details',
@@ -275,6 +289,20 @@ const resources = {
     subscription_error: 'Неуспешно абониране. Опитайте отново по-късно.',
     general_error: 'Възникна грешка. Моля, опитайте отново.',
     enter_email_placeholder: 'Въведете имейла си..',
+  },
+  catalog: {
+    latest: 'Последни',
+    theater_music_performances: 'Театрални и Музикални <strong>представления</strong>',
+    music_concerts: 'Музикални <strong>концерти</strong>',
+    theater_performances: 'Театрални <strong>представления</strong>',
+    location: 'Град',
+    year: 'Година',
+    search: 'търсене',
+    looking_for: 'Какво търсиш <strong>днес</strong>?',
+    search_for: 'Търсене...',
+      results: 'Няма намерени резултати от търсенето!',
+      events: 'Няма намерени представления!'
+    
   },
   login: {
     title: 'Вход',
