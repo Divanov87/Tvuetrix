@@ -82,7 +82,7 @@ function handleCityFilter(city) {
       </div>
       <Loader v-if="isLoading" />
       <template v-else>
-        <ul v-if="filteredEvents.length" class="movies-list has-scrollbar">
+        <ul v-if="filteredEvents" class="movies-list has-scrollbar">
           <EventCard v-for="event in filteredEvents" :key="event._id" v-bind="event" />
         </ul>
 
