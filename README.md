@@ -84,7 +84,7 @@ Theatrix as a **PWA (Progressive Web App)** can be seen in action at this addres
 
 ### Administrators:
 
-* **Event Management:** Administrators can easily create, edit, and delete events such as concerts and theater performances.
+* **Event Management:** Administrators can easily create, edit, and delete events such as concerts and theater performances. View statistics in form of charts about events like boughts vs likes, some prediction and so on 
 * **Highlighting Important Events:** They have the option to feature important events on the first page using a pin button.
 * **Monitoring Tools:** Administrators can monitor user interactions, including tracking purchases and the number of purchases made for marketing purposes (TODO). They can also view user IP addresses during registration and last login ip, as well as registration and last login dates, including their city and email, for further marketing insights. Can track which user is online (live). Can receive messages from contact form. Can track subscribers + unsubscribe on users request if user is unable to unsubscribe for some reason.
 
