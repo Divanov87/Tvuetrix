@@ -1,9 +1,12 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 import Loader from '../../components/Loader.vue';
 import { getAllCities, getAllEvents, searchEvents } from '../../dataProvider/event';
 import EventCard from '../events/components/event-card/EventCard.vue';
+
+const { t } = useI18n();
 
 const router = useRouter();
 const route = useRoute();
@@ -157,11 +160,9 @@ const filteredEvents = computed(() => {
     <section class="top-rated">
       <div class="container">
         <p class="section-subtitle">
-          Search
+          {{ t('catalog.search') }}
         </p>
-        <h2 class="h2 section-title">
-          What Are You Looking For <strong>Today</strong>?
-        </h2>
+        <h2 class="h2 section-title" v-html="$t('catalog.looking_for')" />
         <form @submit="handleSearch">
           <div class="src">
             <input
@@ -169,7 +170,7 @@ const filteredEvents = computed(() => {
               ref="searchInputRef"
               v-model="searchParams.name"
               type="search"
-              placeholder="Search..."
+              :placeholder="$t('catalog.search_for')"
             >
             <button type="submit" class="search-btn vertical">
               &nbsp;&nbsp;<i class="bx bx-search" />
@@ -181,13 +182,13 @@ const filteredEvents = computed(() => {
               v-model="searchParams.category"
             >
               <option value="all">
-                Event
+                {{ t('Events') }}
               </option>
               <option value="theater">
-                Theater
+                {{ t('Theater') }}
               </option>
               <option value="concert">
-                Concert
+                {{ t('Concerts') }}
               </option>
             </select>
             <select
@@ -195,7 +196,7 @@ const filteredEvents = computed(() => {
               v-model="searchParams.location"
             >
               <option value="all">
-                Location
+                {{ t('catalog.location') }}
               </option>
               <option
                 v-for="city in cities"
@@ -210,7 +211,7 @@ const filteredEvents = computed(() => {
               v-model="searchParams.year"
             >
               <option value="all">
-                Year
+                {{ t('catalog.year') }}
               </option>
               <option v-for="year in years" :key="year" :value="year">
                 {{ year }}
@@ -222,11 +223,10 @@ const filteredEvents = computed(() => {
 
       <div class="container">
         <p class="section-subtitle">
-          Latest
+          {{ t('catalog.latest') }}
         </p>
-        <h2 id="city" class="h2 section-title">
-          Theater & Music <strong>Performances</strong>
-        </h2>
+        <h2 id="city" class="h2 section-title" v-html="$t('catalog.theater_music_performances')" />
+        <!-- find some workaround to avoid XSS -->
         <Loader v-if="isLoading" />
         <ul v-else class="movies-list">
           <EventCard
@@ -236,7 +236,8 @@ const filteredEvents = computed(() => {
           />
         </ul>
         <h2 v-if="!isLoading && filteredEvents.length === 0" class="h2 section-title">
-          No {{ displaySearchResults ? 'search results' : 'events' }} found!
+          {{ displaySearchResults ? t('catalog.results') : t('catalog.events') }}
+
         </h2>
       </div>
     </section>

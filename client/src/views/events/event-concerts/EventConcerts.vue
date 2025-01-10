@@ -1,4 +1,5 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
 import EventPagination from '../../../components/event-pagination/EventPagination.vue';
 import Loader from '../../../components/Loader.vue';
 import { useEvents } from '../../../composables/useEvents';
@@ -6,6 +7,8 @@ import { usePagination } from '../../../composables/usePagination';
 import { usePaginationQuery } from '../../../composables/usePaginationQuery';
 import { getConcertEvents } from '../../../dataProvider/event';
 import EventCard from '../components/event-card/EventCard.vue';
+
+const { t } = useI18n();
 
 const { events, isLoading } = useEvents(getConcertEvents);
 const eventsPerPage = 8;
@@ -23,11 +26,10 @@ const { currentPage, totalPages, currentEvents, handlePageChange } = usePaginati
     <section class="top-rated">
       <div class="container">
         <p class="section-subtitle">
-          Latest
+          {{ t('catalog.latest') }}
         </p>
-        <h2 class="h2 section-title">
-          Music <strong>Concerts</strong>
-        </h2>
+        <h2 class="h2 section-title" v-html="$t('catalog.music_concerts')" />
+        <!-- find some workaround to avoid XSS -->
 
         <Loader v-if="isLoading" />
 
