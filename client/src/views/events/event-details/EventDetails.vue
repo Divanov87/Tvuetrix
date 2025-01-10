@@ -23,7 +23,6 @@ import { useAuthStore } from '../../../store/authStore.js';
 import EventComments from './event-comments/EventComments.vue';
 import EventMeta from './event-meta/EventMeta.vue';
 
-
 const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
@@ -63,8 +62,17 @@ watch(
   () => route.fullPath,
   (newPath) => {
     currentUrl.value = `${window.location.origin}${newPath}`;
-  }
-)
+  },
+);
+
+watch(
+  () => route.name,
+  (newRoute) => {
+    if (newRoute !== 'EventCharts') {
+      showChartsState.value = false;
+    }
+  },
+);
 
 function toggleReadMore() {
   showAll.value = !showAll.value;
@@ -117,7 +125,6 @@ function BuyDialog() {
     Swal.fire('No rights to buy tickets!', '', 'error');
   }
 };
-
 
 async function LikeEvent() {
   if (user?.role === 'user') {
@@ -336,7 +343,8 @@ function DeleteDialog() {
 function showCharts() {
   if (showChartsState.value) {
     router.push({ name: 'EventDetails', params: { eventId: eventId.value } });
-  } else {
+  }
+  else {
     router.push({ name: 'EventCharts', params: { eventId: eventId.value } });
   }
 
@@ -364,7 +372,7 @@ function showCharts() {
           <div class="movie-detail-content">
             <p class="detail-subtitle">
               <b class="badge badge-fill">{{ event?.genre }}</b> <b class="badge badge-outline">{{ event?.restriction
-                }}+</b>
+              }}+</b>
             </p>
 
             <h1 class="h1 detail-title" style="text-transform: uppercase">
@@ -416,13 +424,15 @@ function showCharts() {
 
                 <button class="share" @click="event?.pinsList?.length ? UnpinDialog() : PinDialog()">
                   <i
-                    :class="`bx ${event?.pinsList?.length ? 'bxs-bell-ring bx-tada admin-pin' : 'bx-bell bx-tada-hover admin'} box-details`" />
+                    :class="`bx ${event?.pinsList?.length ? 'bxs-bell-ring bx-tada admin-pin' : 'bx-bell bx-tada-hover admin'} box-details`"
+                  />
                   <span>{{ event?.pinsList?.length ? 'Pinned!' : 'Pin' }}</span>
                 </button>
 
                 <button class="share" @click="CloneEvent">
                   <i
-                    :class="`bx ${event?.name?.includes('_') ? 'bxs-error bx-flashing' : 'bx-copy-alt'} admin box-details`" />
+                    :class="`bx ${event?.name?.includes('_') ? 'bxs-error bx-flashing' : 'bx-copy-alt'} admin box-details`"
+                  />
                   <span>{{ event?.name?.includes('_') ? 'Cloned!' : 'Clone' }}</span>
                 </button>
 
@@ -480,7 +490,7 @@ function showCharts() {
       </template>
       <template v-if="user?.role === 'admin'">
         <div class="container">
-        <router-view :likes-list="event?.likesList" :buys-list="event?.buysList" :tickets-left="event?.ticketsLeft" />
+          <router-view :likes-list="event?.likesList" :buys-list="event?.buysList" :tickets-left="event?.ticketsLeft" />
         </div>
       </template>
     </section>
