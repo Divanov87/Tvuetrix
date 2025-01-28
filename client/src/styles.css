@@ -14,7 +14,7 @@
   --gainsboro: hsl(0, 8%, 88%);
   --citrine: hsl(57, 97%, 45%);
   /* --app-main-color: hsl(207, 92%, 47%); */
-  --app-main-color: hsl(357, 92%, 47%);
+  --app-main-color: #e60a15;
   /*  npx pwa-asset-generator ./src/assets/images/logo-t.svg ./src/assets/pwa -i ./src/index.html -m ./src/manifest.webmanifest --background "#000000" --alpha 0.9 --favicon
  */
   --app-main-gray: hsl(0, 0%, 64%);
